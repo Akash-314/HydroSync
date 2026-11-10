@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --color-bg: #F3F8FC;
-    --color-surface: #FFFFFF;
-    --color-elevated: #FFFFFF;
-    --color-heading: #102E4A;
-    --color-body: #425B70;
-    --color-muted: #74899A;
-    --color-border: #DCE7EF;
-    --color-primary: #0B3970;
-    --color-primary-hover: #0786C7;
-    --color-secondary: #0786C7;
-    --color-accent: #24A5D5;
-    --color-innovation: #159B78;
+    --color-bg: 243 248 252;
+    --color-surface: 255 255 255;
+    --color-elevated: 255 255 255;
+    --color-heading: 16 46 74;
+    --color-body: 66 91 112;
+    --color-muted: 116 137 154;
+    --color-border: 220 231 239;
+    --color-primary: 11 57 112;
+    --color-primary-hover: 7 134 199;
+    --color-secondary: 7 134 199;
+    --color-accent: 36 165 213;
+    --color-innovation: 21 155 120;
   }
 
   .dark {
-    --color-bg: #071522;
-    --color-surface: #0F2639;
-    --color-elevated: #153249;
-    --color-heading: #F0F7FC;
-    --color-body: #C0D2E0;
-    --color-muted: #74899A;
-    --color-border: #254257;
-    --color-primary: #51BCE8;
-    --color-primary-hover: #24A5D5;
-    --color-secondary: #24A5D5;
-    --color-accent: #51BCE8;
-    --color-innovation: #49BD99;
+    --color-bg: 7 21 34;
+    --color-surface: 15 38 57;
+    --color-elevated: 21 50 73;
+    --color-heading: 240 247 252;
+    --color-body: 192 210 224;
+    --color-muted: 116 137 154;
+    --color-border: 37 66 87;
+    --color-primary: 81 188 232;
+    --color-primary-hover: 36 165 213;
+    --color-secondary: 36 165 213;
+    --color-accent: 81 188 232;
+    --color-innovation: 73 189 153;
   }
 
   * {
@@ -46,6 +46,16 @@
   }
 }
 
+@layer utilities {
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* Custom subtle scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -53,15 +63,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bg);
+  background: rgb(var(--color-bg));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
+  background: rgb(var(--color-border));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-muted);
+  background: rgb(var(--color-muted));
 }
-

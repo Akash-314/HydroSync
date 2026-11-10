@@ -6,6 +6,7 @@ const config: Config = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/data/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -31,21 +32,24 @@ const config: Config = {
           'dark-blue-accent': '#51BCE8',
           'dark-green-accent': '#49BD99',
         },
-        // Semantic variable tokens mapped to CSS variables for dynamic theming
+        // Semantic variable tokens mapped to RGB CSS variables with alpha-value support
         theme: {
-          bg: 'var(--color-bg)',
-          surface: 'var(--color-surface)',
-          elevated: 'var(--color-elevated)',
-          heading: 'var(--color-heading)',
-          body: 'var(--color-body)',
-          muted: 'var(--color-muted)',
-          border: 'var(--color-border)',
-          primary: 'var(--color-primary)',
-          'primary-hover': 'var(--color-primary-hover)',
-          secondary: 'var(--color-secondary)',
-          accent: 'var(--color-accent)',
-          innovation: 'var(--color-innovation)',
+          bg: 'rgb(var(--color-bg) / <alpha-value>)',
+          surface: 'rgb(var(--color-surface) / <alpha-value>)',
+          elevated: 'rgb(var(--color-elevated) / <alpha-value>)',
+          heading: 'rgb(var(--color-heading) / <alpha-value>)',
+          body: 'rgb(var(--color-body) / <alpha-value>)',
+          muted: 'rgb(var(--color-muted) / <alpha-value>)',
+          border: 'rgb(var(--color-border) / <alpha-value>)',
+          primary: 'rgb(var(--color-primary) / <alpha-value>)',
+          'primary-hover': 'rgb(var(--color-primary-hover) / <alpha-value>)',
+          secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+          accent: 'rgb(var(--color-accent) / <alpha-value>)',
+          innovation: 'rgb(var(--color-innovation) / <alpha-value>)',
         },
+      },
+      boxShadow: {
+        xs: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
       },
       fontFamily: {
         heading: ['var(--font-manrope)', 'sans-serif'],
@@ -66,4 +70,3 @@ const config: Config = {
 };
 
 export default config;
-
