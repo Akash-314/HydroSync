@@ -99,13 +99,13 @@ export function Navbar() {
     {
       label: 'For Schools',
       href: '/for-schools',
-      description: 'Atal Tinkering Labs, K-12 STEM curriculum & robotics kits',
+      description: 'STEM labs, robotics kits & experiential training',
       icon: School,
     },
     {
       label: 'For Colleges',
       href: '/for-colleges',
-      description: 'Institutional MoUs, Centers of Excellence & FDP workshops',
+      description: 'Centres of Excellence, MoUs & faculty development',
       icon: Building2,
     },
   ];
@@ -114,19 +114,19 @@ export function Navbar() {
     {
       label: 'Live Classes',
       href: '/live-classes',
-      description: 'Real-time masterclasses & weekend engineering bootcamps',
+      description: 'Scheduled interactive weekend hardware bootcamps',
       icon: Calendar,
     },
     {
-      label: 'Hardware Gallery',
+      label: 'Gallery & Expos',
       href: '/gallery',
-      description: 'Physical labs, workbench instruments & campus sessions',
+      description: 'Lab setups, student buildathons & event photographs',
       icon: ImageIcon,
     },
     {
-      label: 'Blog & Resources',
+      label: 'Technical Blog',
       href: '/blog',
-      description: 'Firmware pinouts, IoT tutorials & technical articles',
+      description: 'Firmware articles, circuit teardowns & project case studies',
       icon: BookOpen,
     },
   ];
@@ -134,13 +134,22 @@ export function Navbar() {
   const isInstitutionsActive = ['/for-schools', '/for-colleges'].includes(pathname);
   const isResourcesActive = ['/live-classes', '/gallery', '/blog'].includes(pathname);
 
+  // Helper for desktop nav links with restrained blue active state in dark mode
+  const getNavLinkClass = (isActive: boolean) =>
+    cn(
+      'px-2.5 py-1.5 rounded-md transition-colors',
+      isActive
+        ? 'text-brand-secondary font-semibold dark:text-white dark:bg-brand-midnight-french/40'
+        : 'text-theme-heading hover:text-brand-secondary dark:hover:text-[#F5F7FB] dark:hover:bg-brand-dark-surface'
+    );
+
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full transition-all duration-200 border-b',
+        'sticky top-0 z-50 w-full transition-all duration-200 border-b border-theme-border dark:border-brand-dark-border',
         isScrolled
-          ? 'h-16 bg-theme-surface/95 backdrop-blur-md border-theme-border shadow-sm'
-          : 'h-[72px] bg-theme-surface/90 backdrop-blur-sm border-theme-border/80'
+          ? 'h-16 bg-theme-surface/95 dark:bg-brand-dark-bg/95 backdrop-blur-md shadow-sm'
+          : 'h-[72px] bg-theme-surface/90 dark:bg-brand-dark-bg/90 backdrop-blur-sm'
       )}
     >
       <Container className="flex h-full items-center justify-between">
@@ -153,80 +162,32 @@ export function Navbar() {
           className="hidden xl:flex items-center gap-0.5 text-[13.5px] font-medium"
         >
           {/* 1. Home */}
-          <Link
-            href="/"
-            className={cn(
-              'px-2.5 py-1.5 rounded-md transition-colors hover:text-brand-secondary',
-              pathname === '/'
-                ? 'text-brand-secondary font-semibold dark:text-brand-dark-blue-accent'
-                : 'text-theme-heading'
-            )}
-          >
+          <Link href="/" className={getNavLinkClass(pathname === '/')}>
             Home
           </Link>
 
           {/* 2. About Us */}
-          <Link
-            href="/about"
-            className={cn(
-              'px-2.5 py-1.5 rounded-md transition-colors hover:text-brand-secondary',
-              pathname === '/about'
-                ? 'text-brand-secondary font-semibold dark:text-brand-dark-blue-accent'
-                : 'text-theme-heading'
-            )}
-          >
+          <Link href="/about" className={getNavLinkClass(pathname === '/about')}>
             About Us
           </Link>
 
           {/* 3. Services */}
-          <Link
-            href="/services"
-            className={cn(
-              'px-2.5 py-1.5 rounded-md transition-colors hover:text-brand-secondary',
-              pathname === '/services'
-                ? 'text-brand-secondary font-semibold dark:text-brand-dark-blue-accent'
-                : 'text-theme-heading'
-            )}
-          >
+          <Link href="/services" className={getNavLinkClass(pathname === '/services')}>
             Services
           </Link>
 
           {/* 4. Internships */}
-          <Link
-            href="/internships"
-            className={cn(
-              'px-2.5 py-1.5 rounded-md transition-colors hover:text-brand-secondary',
-              pathname === '/internships'
-                ? 'text-brand-secondary font-semibold dark:text-brand-dark-blue-accent'
-                : 'text-theme-heading'
-            )}
-          >
+          <Link href="/internships" className={getNavLinkClass(pathname === '/internships')}>
             Internships
           </Link>
 
           {/* 5. Courses */}
-          <Link
-            href="/courses"
-            className={cn(
-              'px-2.5 py-1.5 rounded-md transition-colors hover:text-brand-secondary',
-              pathname === '/courses'
-                ? 'text-brand-secondary font-semibold dark:text-brand-dark-blue-accent'
-                : 'text-theme-heading'
-            )}
-          >
+          <Link href="/courses" className={getNavLinkClass(pathname === '/courses')}>
             Courses
           </Link>
 
           {/* 6. Events */}
-          <Link
-            href="/events"
-            className={cn(
-              'px-2.5 py-1.5 rounded-md transition-colors hover:text-brand-secondary',
-              pathname === '/events'
-                ? 'text-brand-secondary font-semibold dark:text-brand-dark-blue-accent'
-                : 'text-theme-heading'
-            )}
-          >
+          <Link href="/events" className={getNavLinkClass(pathname === '/events')}>
             Events
           </Link>
 
@@ -243,11 +204,11 @@ export function Navbar() {
               aria-haspopup="true"
               aria-expanded={openDropdown === 'institutions'}
               className={cn(
-                'inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md transition-colors hover:text-brand-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent',
+                'inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent dark:focus-visible:ring-brand-midnight-yellow',
                 isInstitutionsActive
-                  ? 'text-brand-secondary font-semibold dark:text-brand-dark-blue-accent'
-                  : 'text-theme-heading',
-                openDropdown === 'institutions' && 'text-brand-secondary'
+                  ? 'text-brand-secondary font-semibold dark:text-white dark:bg-brand-midnight-french/40'
+                  : 'text-theme-heading hover:text-brand-secondary dark:hover:text-[#F5F7FB] dark:hover:bg-brand-dark-surface',
+                openDropdown === 'institutions' && 'text-brand-secondary dark:text-white'
               )}
             >
               <span>Institutions</span>
@@ -265,7 +226,7 @@ export function Navbar() {
                 aria-label="Institutions menu"
                 className="absolute top-full left-0 z-50 w-72 pt-2 animate-in fade-in-50 zoom-in-95 duration-150"
               >
-                <div className="rounded-xl border border-theme-border bg-theme-surface p-2 shadow-xl backdrop-blur-lg">
+                <div className="rounded-xl border border-theme-border dark:border-brand-dark-border bg-theme-surface dark:bg-brand-dark-elevated p-2 shadow-xl backdrop-blur-lg">
                   {institutionsSublinks.map((sublink) => (
                     <Link
                       key={sublink.href}
@@ -273,18 +234,18 @@ export function Navbar() {
                       role="menuitem"
                       onClick={() => setOpenDropdown(null)}
                       className={cn(
-                        'flex items-start gap-3 rounded-lg p-2.5 transition-colors hover:bg-theme-bg',
-                        pathname === sublink.href && 'bg-theme-bg font-medium'
+                        'flex items-start gap-3 rounded-lg p-2.5 transition-colors hover:bg-theme-bg dark:hover:bg-brand-dark-elevated-sec',
+                        pathname === sublink.href && 'bg-theme-bg dark:bg-brand-midnight-french/30 font-medium'
                       )}
                     >
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-brand-light-bg text-brand-secondary dark:bg-brand-dark-surface dark:text-brand-dark-blue-accent mt-0.5">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-brand-light-bg text-brand-secondary dark:bg-brand-dark-surface dark:text-brand-midnight-azure mt-0.5">
                         <sublink.icon className="h-4 w-4" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold font-heading text-theme-heading">
+                        <div className="text-xs font-bold font-heading text-theme-heading dark:text-brand-dark-heading">
                           {sublink.label}
                         </div>
-                        <p className="text-[11px] text-theme-muted leading-tight mt-0.5">
+                        <p className="text-[11px] text-theme-muted dark:text-brand-dark-muted leading-tight mt-0.5">
                           {sublink.description}
                         </p>
                       </div>
@@ -296,15 +257,7 @@ export function Navbar() {
           </div>
 
           {/* 8. Projects */}
-          <Link
-            href="/projects"
-            className={cn(
-              'px-2.5 py-1.5 rounded-md transition-colors hover:text-brand-secondary',
-              pathname === '/projects'
-                ? 'text-brand-secondary font-semibold dark:text-brand-dark-blue-accent'
-                : 'text-theme-heading'
-            )}
-          >
+          <Link href="/projects" className={getNavLinkClass(pathname === '/projects')}>
             Projects
           </Link>
 
@@ -321,11 +274,11 @@ export function Navbar() {
               aria-haspopup="true"
               aria-expanded={openDropdown === 'resources'}
               className={cn(
-                'inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md transition-colors hover:text-brand-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent',
+                'inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent dark:focus-visible:ring-brand-midnight-yellow',
                 isResourcesActive
-                  ? 'text-brand-secondary font-semibold dark:text-brand-dark-blue-accent'
-                  : 'text-theme-heading',
-                openDropdown === 'resources' && 'text-brand-secondary'
+                  ? 'text-brand-secondary font-semibold dark:text-white dark:bg-brand-midnight-french/40'
+                  : 'text-theme-heading hover:text-brand-secondary dark:hover:text-[#F5F7FB] dark:hover:bg-brand-dark-surface',
+                openDropdown === 'resources' && 'text-brand-secondary dark:text-white'
               )}
             >
               <span>Resources</span>
@@ -343,7 +296,7 @@ export function Navbar() {
                 aria-label="Resources menu"
                 className="absolute top-full left-0 z-50 w-80 pt-2 animate-in fade-in-50 zoom-in-95 duration-150"
               >
-                <div className="rounded-xl border border-theme-border bg-theme-surface p-2 shadow-xl backdrop-blur-lg">
+                <div className="rounded-xl border border-theme-border dark:border-brand-dark-border bg-theme-surface dark:bg-brand-dark-elevated p-2 shadow-xl backdrop-blur-lg">
                   {resourcesSublinks.map((sublink) => (
                     <Link
                       key={sublink.href}
@@ -351,18 +304,18 @@ export function Navbar() {
                       role="menuitem"
                       onClick={() => setOpenDropdown(null)}
                       className={cn(
-                        'flex items-start gap-3 rounded-lg p-2.5 transition-colors hover:bg-theme-bg',
-                        pathname === sublink.href && 'bg-theme-bg font-medium'
+                        'flex items-start gap-3 rounded-lg p-2.5 transition-colors hover:bg-theme-bg dark:hover:bg-brand-dark-elevated-sec',
+                        pathname === sublink.href && 'bg-theme-bg dark:bg-brand-midnight-french/30 font-medium'
                       )}
                     >
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-brand-light-bg text-brand-secondary dark:bg-brand-dark-surface dark:text-brand-dark-blue-accent mt-0.5">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-brand-light-bg text-brand-secondary dark:bg-brand-dark-surface dark:text-brand-midnight-azure mt-0.5">
                         <sublink.icon className="h-4 w-4" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold font-heading text-theme-heading">
+                        <div className="text-xs font-bold font-heading text-theme-heading dark:text-brand-dark-heading">
                           {sublink.label}
                         </div>
-                        <p className="text-[11px] text-theme-muted leading-tight mt-0.5">
+                        <p className="text-[11px] text-theme-muted dark:text-brand-dark-muted leading-tight mt-0.5">
                           {sublink.description}
                         </p>
                       </div>
@@ -374,38 +327,22 @@ export function Navbar() {
           </div>
 
           {/* 10. Team */}
-          <Link
-            href="/team"
-            className={cn(
-              'px-2.5 py-1.5 rounded-md transition-colors hover:text-brand-secondary',
-              pathname === '/team'
-                ? 'text-brand-secondary font-semibold dark:text-brand-dark-blue-accent'
-                : 'text-theme-heading'
-            )}
-          >
+          <Link href="/team" className={getNavLinkClass(pathname === '/team')}>
             Team
           </Link>
 
           {/* 11. Contact */}
-          <Link
-            href="/contact"
-            className={cn(
-              'px-2.5 py-1.5 rounded-md transition-colors hover:text-brand-secondary',
-              pathname === '/contact'
-                ? 'text-brand-secondary font-semibold dark:text-brand-dark-blue-accent'
-                : 'text-theme-heading'
-            )}
-          >
+          <Link href="/contact" className={getNavLinkClass(pathname === '/contact')}>
             Contact
           </Link>
         </nav>
 
-        {/* Desktop Header Actions */}
+        {/* Desktop Header Actions (Theme Toggle + School Bus Yellow Apply Now CTA) */}
         <div className="hidden lg:flex items-center gap-3 shrink-0">
           <ThemeToggle />
           <Button
             href="/apply"
-            variant="primary"
+            variant="cta"
             size="sm"
             className="font-semibold text-xs tracking-wide shadow-sm"
           >
@@ -422,7 +359,7 @@ export function Navbar() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={isMobileMenuOpen}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-theme-border bg-theme-surface text-theme-heading hover:bg-brand-light-bg dark:hover:bg-brand-dark-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent transition-colors"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-theme-border dark:border-brand-dark-border bg-theme-surface dark:bg-brand-dark-surface text-theme-heading dark:text-brand-dark-heading hover:bg-brand-light-bg dark:hover:bg-brand-dark-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent dark:focus-visible:ring-brand-midnight-yellow transition-colors"
           >
             {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -435,12 +372,12 @@ export function Navbar() {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation Drawer"
-          className="xl:hidden fixed inset-x-0 top-[64px] sm:top-[72px] bottom-0 z-50 bg-theme-surface/98 backdrop-blur-xl border-b border-theme-border overflow-y-auto p-5 sm:p-6 flex flex-col justify-between animate-in fade-in-50 duration-150"
+          className="xl:hidden fixed inset-x-0 top-[64px] sm:top-[72px] bottom-0 z-50 bg-theme-surface/98 dark:bg-brand-dark-bg/98 backdrop-blur-xl border-b border-theme-border dark:border-brand-dark-border overflow-y-auto p-5 sm:p-6 flex flex-col justify-between animate-in fade-in-50 duration-150"
         >
           <div className="space-y-1">
             {/* Quick Top CTA inside Drawer */}
-            <div className="mb-4 pb-4 border-b border-theme-border/70">
-              <Button href="/apply" variant="primary" size="md" className="w-full">
+            <div className="mb-4 pb-4 border-b border-theme-border/70 dark:border-brand-dark-border/70">
+              <Button href="/apply" variant="cta" size="md" className="w-full">
                 <Sparkles className="mr-2 h-4 w-4" />
                 <span>Apply for Admission</span>
               </Button>
@@ -452,7 +389,9 @@ export function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
               className={cn(
                 'block px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors',
-                pathname === '/' ? 'bg-theme-bg text-brand-secondary font-bold' : 'text-theme-heading hover:bg-theme-bg'
+                pathname === '/'
+                  ? 'bg-theme-bg dark:bg-brand-midnight-french/30 text-brand-secondary dark:text-white font-bold'
+                  : 'text-theme-heading dark:text-brand-dark-heading hover:bg-theme-bg dark:hover:bg-brand-dark-surface'
               )}
             >
               Home
@@ -462,7 +401,9 @@ export function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
               className={cn(
                 'block px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors',
-                pathname === '/about' ? 'bg-theme-bg text-brand-secondary font-bold' : 'text-theme-heading hover:bg-theme-bg'
+                pathname === '/about'
+                  ? 'bg-theme-bg dark:bg-brand-midnight-french/30 text-brand-secondary dark:text-white font-bold'
+                  : 'text-theme-heading dark:text-brand-dark-heading hover:bg-theme-bg dark:hover:bg-brand-dark-surface'
               )}
             >
               About Us
@@ -472,7 +413,9 @@ export function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
               className={cn(
                 'block px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors',
-                pathname === '/services' ? 'bg-theme-bg text-brand-secondary font-bold' : 'text-theme-heading hover:bg-theme-bg'
+                pathname === '/services'
+                  ? 'bg-theme-bg dark:bg-brand-midnight-french/30 text-brand-secondary dark:text-white font-bold'
+                  : 'text-theme-heading dark:text-brand-dark-heading hover:bg-theme-bg dark:hover:bg-brand-dark-surface'
               )}
             >
               Services
@@ -482,7 +425,9 @@ export function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
               className={cn(
                 'block px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors',
-                pathname === '/internships' ? 'bg-theme-bg text-brand-secondary font-bold' : 'text-theme-heading hover:bg-theme-bg'
+                pathname === '/internships'
+                  ? 'bg-theme-bg dark:bg-brand-midnight-french/30 text-brand-secondary dark:text-white font-bold'
+                  : 'text-theme-heading dark:text-brand-dark-heading hover:bg-theme-bg dark:hover:bg-brand-dark-surface'
               )}
             >
               Internships
@@ -492,7 +437,9 @@ export function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
               className={cn(
                 'block px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors',
-                pathname === '/courses' ? 'bg-theme-bg text-brand-secondary font-bold' : 'text-theme-heading hover:bg-theme-bg'
+                pathname === '/courses'
+                  ? 'bg-theme-bg dark:bg-brand-midnight-french/30 text-brand-secondary dark:text-white font-bold'
+                  : 'text-theme-heading dark:text-brand-dark-heading hover:bg-theme-bg dark:hover:bg-brand-dark-surface'
               )}
             >
               Courses
@@ -502,35 +449,37 @@ export function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
               className={cn(
                 'block px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors',
-                pathname === '/events' ? 'bg-theme-bg text-brand-secondary font-bold' : 'text-theme-heading hover:bg-theme-bg'
+                pathname === '/events'
+                  ? 'bg-theme-bg dark:bg-brand-midnight-french/30 text-brand-secondary dark:text-white font-bold'
+                  : 'text-theme-heading dark:text-brand-dark-heading hover:bg-theme-bg dark:hover:bg-brand-dark-surface'
               )}
             >
               Events
             </Link>
 
             {/* Mobile Expandable Institutions Group */}
-            <div className="border-t border-theme-border/60 pt-2">
+            <div className="border-t border-theme-border/60 dark:border-brand-dark-border/60 pt-2">
               <button
                 type="button"
                 onClick={() => toggleMobileGroup('institutions')}
-                className="flex w-full items-center justify-between px-3 py-2 text-xs font-bold uppercase tracking-wider text-theme-muted hover:text-theme-heading"
+                className="flex w-full items-center justify-between px-3 py-2 text-xs font-bold uppercase tracking-wider text-theme-muted dark:text-brand-dark-muted hover:text-theme-heading"
               >
                 <span>Institutions</span>
                 <ChevronDown
                   className={cn(
                     'h-4 w-4 transition-transform duration-200',
-                    mobileExpanded.institutions && 'rotate-180 text-brand-secondary'
+                    mobileExpanded.institutions && 'rotate-180 text-brand-secondary dark:text-brand-midnight-yellow'
                   )}
                 />
               </button>
               {mobileExpanded.institutions && (
-                <div className="mt-1 space-y-1 pl-3 border-l-2 border-brand-secondary/30 ml-3">
+                <div className="mt-1 space-y-1 pl-3 border-l-2 border-brand-secondary/30 dark:border-brand-midnight-azure/50 ml-3">
                   {institutionsSublinks.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block px-3 py-2 rounded-md text-sm text-theme-heading hover:bg-theme-bg"
+                      className="block px-3 py-2 rounded-md text-sm text-theme-heading dark:text-brand-dark-heading hover:bg-theme-bg dark:hover:bg-brand-dark-surface"
                     >
                       {item.label}
                     </Link>
@@ -545,35 +494,37 @@ export function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
               className={cn(
                 'block px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors',
-                pathname === '/projects' ? 'bg-theme-bg text-brand-secondary font-bold' : 'text-theme-heading hover:bg-theme-bg'
+                pathname === '/projects'
+                  ? 'bg-theme-bg dark:bg-brand-midnight-french/30 text-brand-secondary dark:text-white font-bold'
+                  : 'text-theme-heading dark:text-brand-dark-heading hover:bg-theme-bg dark:hover:bg-brand-dark-surface'
               )}
             >
               Projects
             </Link>
 
             {/* Mobile Expandable Resources Group */}
-            <div className="border-t border-theme-border/60 pt-2">
+            <div className="border-t border-theme-border/60 dark:border-brand-dark-border/60 pt-2">
               <button
                 type="button"
                 onClick={() => toggleMobileGroup('resources')}
-                className="flex w-full items-center justify-between px-3 py-2 text-xs font-bold uppercase tracking-wider text-theme-muted hover:text-theme-heading"
+                className="flex w-full items-center justify-between px-3 py-2 text-xs font-bold uppercase tracking-wider text-theme-muted dark:text-brand-dark-muted hover:text-theme-heading"
               >
                 <span>Resources</span>
                 <ChevronDown
                   className={cn(
                     'h-4 w-4 transition-transform duration-200',
-                    mobileExpanded.resources && 'rotate-180 text-brand-secondary'
+                    mobileExpanded.resources && 'rotate-180 text-brand-secondary dark:text-brand-midnight-yellow'
                   )}
                 />
               </button>
               {mobileExpanded.resources && (
-                <div className="mt-1 space-y-1 pl-3 border-l-2 border-brand-secondary/30 ml-3">
+                <div className="mt-1 space-y-1 pl-3 border-l-2 border-brand-secondary/30 dark:border-brand-midnight-azure/50 ml-3">
                   {resourcesSublinks.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block px-3 py-2 rounded-md text-sm text-theme-heading hover:bg-theme-bg"
+                      className="block px-3 py-2 rounded-md text-sm text-theme-heading dark:text-brand-dark-heading hover:bg-theme-bg dark:hover:bg-brand-dark-surface"
                     >
                       {item.label}
                     </Link>
@@ -588,7 +539,9 @@ export function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
               className={cn(
                 'block px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors',
-                pathname === '/team' ? 'bg-theme-bg text-brand-secondary font-bold' : 'text-theme-heading hover:bg-theme-bg'
+                pathname === '/team'
+                  ? 'bg-theme-bg dark:bg-brand-midnight-french/30 text-brand-secondary dark:text-white font-bold'
+                  : 'text-theme-heading dark:text-brand-dark-heading hover:bg-theme-bg dark:hover:bg-brand-dark-surface'
               )}
             >
               Team
@@ -600,7 +553,9 @@ export function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
               className={cn(
                 'block px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors',
-                pathname === '/contact' ? 'bg-theme-bg text-brand-secondary font-bold' : 'text-theme-heading hover:bg-theme-bg'
+                pathname === '/contact'
+                  ? 'bg-theme-bg dark:bg-brand-midnight-french/30 text-brand-secondary dark:text-white font-bold'
+                  : 'text-theme-heading dark:text-brand-dark-heading hover:bg-theme-bg dark:hover:bg-brand-dark-surface'
               )}
             >
               Contact Directory
@@ -608,13 +563,13 @@ export function Navbar() {
           </div>
 
           {/* Bottom Info inside Drawer */}
-          <div className="pt-6 mt-6 border-t border-theme-border/60 text-xs text-theme-muted space-y-2">
+          <div className="pt-6 mt-6 border-t border-theme-border/60 dark:border-brand-dark-border/60 text-xs text-theme-muted dark:text-brand-dark-muted space-y-2">
             <div>
-              <span className="font-semibold text-theme-heading block">HydroSync Innovations LLP</span>
+              <span className="font-semibold text-theme-heading dark:text-brand-dark-heading block">HydroSync Innovations LLP</span>
               <span>Bengaluru, Karnataka, India</span>
             </div>
             <div>
-              <a href="mailto:contact@hydrosync.in" className="text-brand-secondary hover:underline">
+              <a href="mailto:contact@hydrosync.in" className="text-brand-secondary dark:text-brand-midnight-azure hover:underline">
                 contact@hydrosync.in
               </a>
             </div>

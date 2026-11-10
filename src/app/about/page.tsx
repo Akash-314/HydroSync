@@ -67,7 +67,7 @@ export default function AboutPage() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-brand-secondary dark:text-brand-dark-blue-accent">
+              <span className="text-xs font-bold uppercase tracking-wider text-brand-secondary dark:text-brand-midnight-azure">
                 Who We Are
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold font-heading text-theme-heading leading-tight tracking-tight">
@@ -120,7 +120,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left 6 Cols: Narrative */}
             <div className="lg:col-span-6 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-brand-secondary dark:text-brand-dark-blue-accent">
+              <span className="text-xs font-bold uppercase tracking-wider text-brand-secondary dark:text-brand-midnight-azure">
                 Our Genesis
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold font-heading text-theme-heading leading-tight">
@@ -311,7 +311,7 @@ export default function AboutPage() {
             </div>
 
             <div className="p-6 rounded-xl border border-theme-border bg-theme-bg/60">
-              <div className="h-10 w-10 rounded-lg bg-theme-surface border border-theme-border flex items-center justify-center text-brand-primary dark:text-brand-dark-blue-accent mb-4">
+              <div className="h-10 w-10 rounded-lg bg-theme-surface border border-theme-border flex items-center justify-center text-brand-primary dark:text-brand-midnight-azure mb-4">
                 <Layers className="h-5 w-5" />
               </div>
               <h3 className="text-base font-bold font-heading text-theme-heading mb-2">
@@ -339,7 +339,7 @@ export default function AboutPage() {
 
           <div className="max-w-3xl mx-auto space-y-6">
             <div className="flex gap-4 items-start">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-primary text-white font-mono text-xs font-bold dark:bg-brand-dark-blue-accent dark:text-brand-dark-bg">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-primary text-white font-mono text-xs font-bold dark:bg-brand-midnight-french dark:text-white">
                 01
               </div>
               <div className="p-5 rounded-xl border border-theme-border bg-theme-surface flex-1">
@@ -356,7 +356,7 @@ export default function AboutPage() {
             </div>
 
             <div className="flex gap-4 items-start">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-primary text-white font-mono text-xs font-bold dark:bg-brand-dark-blue-accent dark:text-brand-dark-bg">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-primary text-white font-mono text-xs font-bold dark:bg-brand-midnight-french dark:text-white">
                 02
               </div>
               <div className="p-5 rounded-xl border border-theme-border bg-theme-surface flex-1">
@@ -373,7 +373,7 @@ export default function AboutPage() {
             </div>
 
             <div className="flex gap-4 items-start">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-primary text-white font-mono text-xs font-bold dark:bg-brand-dark-blue-accent dark:text-brand-dark-bg">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-primary text-white font-mono text-xs font-bold dark:bg-brand-midnight-french dark:text-white">
                 03
               </div>
               <div className="p-5 rounded-xl border border-theme-border bg-theme-surface flex-1">
@@ -390,7 +390,7 @@ export default function AboutPage() {
             </div>
 
             <div className="flex gap-4 items-start">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-primary text-white font-mono text-xs font-bold dark:bg-brand-dark-blue-accent dark:text-brand-dark-bg">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-primary text-white font-mono text-xs font-bold dark:bg-brand-midnight-french dark:text-white">
                 04
               </div>
               <div className="p-5 rounded-xl border border-theme-border bg-theme-surface flex-1">
@@ -471,7 +471,7 @@ export default function AboutPage() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-brand-secondary dark:text-brand-dark-blue-accent">
+              <span className="text-xs font-bold uppercase tracking-wider text-brand-secondary dark:text-brand-midnight-azure">
                 Network &bull; Collaborations
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold font-heading text-theme-heading leading-tight">
@@ -588,7 +588,7 @@ export default function AboutPage() {
       {/* =========================================================================
           SECTION 12 — FINAL CTA (Explore Services / Contact Leadership)
          ========================================================================= */}
-      <section className="py-16 md:py-20 bg-brand-primary dark:bg-brand-dark-surface text-white">
+      <section className="py-16 md:py-20 bg-brand-primary dark:bg-brand-midnight-imperial text-white">
         <Container className="text-center max-w-3xl">
           <Badge variant="success" className="mb-4">
             Connect with HydroSync
@@ -603,9 +603,9 @@ export default function AboutPage() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Button
               href="/services"
-              variant="secondary"
+              variant="cta"
               size="lg"
-              className="bg-white text-brand-primary hover:bg-slate-100 dark:bg-brand-dark-blue-accent dark:text-brand-dark-bg font-bold shadow-md"
+              className="bg-white text-brand-primary hover:bg-slate-100 dark:bg-brand-midnight-yellow dark:text-[#101820] dark:hover:bg-brand-midnight-gold font-bold shadow-md"
             >
               Explore Services
             </Button>

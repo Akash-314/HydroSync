@@ -24,7 +24,7 @@ export function PageHero({
   return (
     <div
       className={cn(
-        'relative border-b border-theme-border bg-theme-surface py-12 md:py-16 transition-colors',
+        'relative border-b border-theme-border dark:border-brand-dark-border bg-theme-surface dark:bg-brand-dark-bg py-12 md:py-16 transition-colors',
         className
       )}
     >
@@ -36,15 +36,15 @@ export function PageHero({
         )}
         <div className="max-w-3xl">
           {eyebrow && (
-            <span className="inline-block text-xs font-semibold uppercase tracking-wider text-brand-secondary dark:text-brand-dark-blue-accent mb-2">
+            <span className="inline-block text-xs font-semibold uppercase tracking-wider text-brand-secondary dark:text-brand-midnight-azure mb-2">
               {eyebrow}
             </span>
           )}
-          <h1 className="text-3xl sm:text-4xl font-extrabold font-heading text-theme-heading leading-tight tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold font-heading text-theme-heading dark:text-brand-dark-heading leading-tight tracking-tight">
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-4 text-base sm:text-lg text-theme-body leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-theme-body dark:text-brand-dark-body leading-relaxed">
               {subtitle}
             </p>
           )}
@@ -54,4 +54,3 @@ export function PageHero({
     </div>
   );
 }
-

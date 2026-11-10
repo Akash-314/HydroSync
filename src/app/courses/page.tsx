@@ -192,7 +192,7 @@ export default function CoursesPage() {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 transition-colors ${
                   selectedCategory === category
-                    ? 'bg-brand-primary text-white dark:bg-brand-dark-blue-accent dark:text-brand-dark-bg'
+                    ? 'bg-brand-primary text-white dark:bg-brand-midnight-french dark:text-white'
                     : 'bg-theme-bg text-theme-body border border-theme-border hover:bg-theme-surface hover:text-theme-heading'
                 }`}
               >
@@ -271,7 +271,7 @@ export default function CoursesPage() {
 
                     {/* Hardware Kit Included Tag */}
                     {course.hardwareKitIncluded && (
-                      <div className="flex items-center gap-2 p-2 rounded-md bg-brand-light-bg dark:bg-brand-dark-surface border border-brand-secondary/30 text-[11px] font-medium text-brand-primary dark:text-brand-dark-blue-accent">
+                      <div className="flex items-center gap-2 p-2 rounded-md bg-brand-light-bg dark:bg-brand-dark-elevated border border-brand-secondary/30 dark:border-brand-dark-border text-[11px] font-medium text-brand-primary dark:text-brand-dark-heading">
                         <Cpu className="h-4 w-4 shrink-0 text-brand-secondary" />
                         <span>Hands-on Hardware Kit Included in Batch</span>
                       </div>
@@ -340,7 +340,7 @@ export default function CoursesPage() {
         <Container>
           <div className="rounded-2xl border border-theme-border bg-brand-light-bg/60 dark:bg-brand-dark-surface p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="max-w-xl text-center md:text-left">
-              <span className="text-xs font-bold uppercase tracking-wider text-brand-secondary dark:text-brand-dark-blue-accent">
+              <span className="text-xs font-bold uppercase tracking-wider text-brand-secondary dark:text-brand-midnight-azure">
                 Customized Curriculum
               </span>
               <h3 className="text-lg sm:text-xl font-bold font-heading text-theme-heading mt-1">
@@ -573,7 +573,7 @@ export default function CoursesPage() {
                 <div className="pt-3">
                   <Button
                     type="submit"
-                    variant="primary"
+                    variant="cta"
                     size="lg"
                     isLoading={formStatus === 'submitting'}
                     className="w-full text-sm font-bold shadow-sm"

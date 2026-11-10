@@ -25,19 +25,18 @@ export function SectionHeader({
       )}
     >
       {eyebrow && (
-        <span className="inline-block text-xs font-semibold uppercase tracking-wider text-brand-secondary dark:text-brand-dark-blue-accent mb-2">
+        <span className="inline-block text-xs font-semibold uppercase tracking-wider text-brand-secondary dark:text-brand-midnight-azure mb-2">
           {eyebrow}
         </span>
       )}
-      <h2 className="text-2xl sm:text-3xl font-bold font-heading text-theme-heading leading-tight tracking-tight">
+      <h2 className="text-2xl sm:text-3xl font-bold font-heading text-theme-heading dark:text-brand-dark-heading leading-tight tracking-tight">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-3 text-base text-theme-body leading-relaxed">
+        <p className="mt-3 text-base text-theme-body dark:text-brand-dark-body leading-relaxed">
           {subtitle}
         </p>
       )}
     </div>
   );
 }
-

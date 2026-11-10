@@ -13,18 +13,18 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Card hoverable className="h-full">
       {/* Visual Header / Diagram placeholder */}
-      <div className="relative aspect-[16/10] w-full bg-theme-bg border-b border-theme-border/60 flex items-center justify-center p-6 text-theme-muted overflow-hidden">
+      <div className="relative aspect-[16/10] w-full bg-theme-bg dark:bg-brand-dark-bg border-b border-theme-border/60 dark:border-brand-dark-border/60 flex items-center justify-center p-6 text-theme-muted dark:text-brand-dark-muted overflow-hidden">
         <div className="flex flex-col items-center justify-center text-center">
-          <div className="h-10 w-10 rounded-lg bg-theme-surface border border-theme-border flex items-center justify-center text-brand-secondary mb-2">
+          <div className="h-10 w-10 rounded-lg bg-theme-surface dark:bg-brand-dark-surface border border-theme-border dark:border-brand-dark-border flex items-center justify-center text-brand-secondary dark:text-brand-midnight-azure mb-2">
             <Cpu className="h-5 w-5" />
           </div>
-          <span className="text-xs font-mono font-medium tracking-tight">
+          <span className="text-xs font-mono font-medium tracking-tight text-theme-muted dark:text-brand-dark-muted">
             {project.scope}
           </span>
         </div>
         {project.impactMetric && (
           <div className="absolute bottom-3 left-3">
-            <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-brand-primary text-white dark:bg-brand-dark-blue-accent dark:text-brand-dark-bg">
+            <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-brand-primary text-white dark:bg-brand-midnight-french dark:text-white">
               {project.impactMetric}
             </span>
           </div>
@@ -44,7 +44,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-theme-bg text-theme-muted border border-theme-border"
+              className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-theme-bg dark:bg-brand-dark-bg text-theme-muted dark:text-brand-dark-secondary border border-theme-border dark:border-brand-dark-border"
             >
               {tech}
             </span>
@@ -56,7 +56,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <CardFooter>
           <Link
             href={project.href}
-            className="inline-flex items-center gap-1 text-xs font-semibold text-brand-secondary hover:text-brand-primary dark:hover:text-brand-dark-blue-accent transition-colors"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-brand-secondary hover:text-brand-primary dark:text-brand-midnight-azure dark:hover:text-brand-midnight-gold transition-colors"
           >
             <span>View Case Study Architecture</span>
             <ArrowUpRight className="h-3.5 w-3.5" />
@@ -66,4 +66,3 @@ export function ProjectCard({ project }: ProjectCardProps) {
     </Card>
   );
 }
-

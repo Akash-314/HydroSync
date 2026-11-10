@@ -36,7 +36,7 @@ export default function CertificationsPage() {
               </p>
             </div>
             <div className="p-6 rounded-xl border border-theme-border bg-theme-surface">
-              <ShieldCheck className="h-8 w-8 text-brand-primary dark:text-brand-dark-blue-accent mb-3" />
+              <ShieldCheck className="h-8 w-8 text-brand-primary dark:text-brand-midnight-azure mb-3" />
               <h3 className="text-base font-bold font-heading text-theme-heading mb-2">Unique Certificate ID</h3>
               <p className="text-xs text-theme-body leading-relaxed">
                 Every certificate issued features a unique serial identification number archived in our permanent registry for institutional background checks.

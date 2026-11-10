@@ -4,33 +4,52 @@
 
 @layer base {
   :root {
-    --color-bg: 243 248 252;
-    --color-surface: 255 255 255;
-    --color-elevated: 255 255 255;
-    --color-heading: 16 46 74;
-    --color-body: 66 91 112;
-    --color-muted: 116 137 154;
-    --color-border: 220 231 239;
-    --color-primary: 11 57 112;
-    --color-primary-hover: 7 134 199;
-    --color-secondary: 7 134 199;
-    --color-accent: 36 165 213;
-    --color-innovation: 21 155 120;
+    --color-bg: 243 248 252;              /* #F3F8FC Light Background */
+    --color-bg-alt: 255 255 255;          /* #FFFFFF Alternate Section */
+    --color-surface: 255 255 255;         /* #FFFFFF White Surface */
+    --color-elevated: 255 255 255;        /* #FFFFFF Elevated Surface */
+    --color-elevated-secondary: 243 248 252; /* #F3F8FC Secondary Elevated */
+    --color-heading: 16 46 74;            /* #102E4A Heading Text */
+    --color-body: 66 91 112;              /* #425B70 Body Text */
+    --color-secondary-text: 90 114 135;   /* #5A7287 Secondary Text */
+    --color-muted: 116 137 154;           /* #74899A Muted Text */
+    --color-border: 220 231 239;          /* #DCE7EF Border */
+    --color-divider: 220 231 239;         /* #DCE7EF Divider */
+    --color-primary: 11 57 112;           /* #0B3970 Primary Blue */
+    --color-primary-hover: 7 134 199;     /* #0786C7 Primary Hover */
+    --color-secondary: 7 134 199;         /* #0786C7 Secondary Blue */
+    --color-accent: 36 165 213;           /* #24A5D5 Accent */
+    --color-accent-gold: 255 213 0;       /* #FFD500 Gold */
+    --color-brand-imperial: 11 57 112;    /* #0B3970 Imperial Blue */
+    --color-innovation: 21 155 120;       /* #159B78 Innovation Green */
+    --color-cta: 11 57 112;               /* #0B3970 CTA */
+    --color-cta-text: 255 255 255;        /* #FFFFFF CTA Text */
+    --color-cta-hover: 7 134 199;         /* #0786C7 CTA Hover */
   }
 
+  /* MIDNIGHT SKY Dark Mode Palette */
   .dark {
-    --color-bg: 7 21 34;
-    --color-surface: 15 38 57;
-    --color-elevated: 21 50 73;
-    --color-heading: 240 247 252;
-    --color-body: 192 210 224;
-    --color-muted: 116 137 154;
-    --color-border: 37 66 87;
-    --color-primary: 81 188 232;
-    --color-primary-hover: 36 165 213;
-    --color-secondary: 36 165 213;
-    --color-accent: 81 188 232;
-    --color-innovation: 73 189 153;
+    --color-bg: 7 21 43;                  /* #07152B Main page background (deep midnight navy) */
+    --color-bg-alt: 10 27 52;             /* #0A1B34 Alternate section background */
+    --color-surface: 13 35 66;            /* #0D2342 Primary card surface */
+    --color-elevated: 18 45 80;           /* #122D50 Elevated card surface */
+    --color-elevated-secondary: 24 56 92; /* #18385C Secondary elevated surface */
+    --color-heading: 245 247 251;         /* #F5F7FB Primary headings */
+    --color-body: 207 217 230;            /* #CFD9E6 Body text */
+    --color-secondary-text: 172 189 207;  /* #ACBDCF Secondary text */
+    --color-muted: 135 157 181;           /* #879DB5 Muted text */
+    --color-border: 36 67 101;            /* #244365 Border */
+    --color-divider: 29 54 85;            /* #1D3655 Subtle divider */
+    --color-primary: 0 63 136;            /* #003F88 French Blue (Primary blue buttons / active items) */
+    --color-primary-hover: 0 80 157;      /* #00509D Steel Azure (Hover state) */
+    --color-secondary: 0 80 157;          /* #00509D Steel Azure (Secondary actions / links) */
+    --color-accent: 253 197 0;            /* #FDC500 School Bus Yellow (Controlled accent / CTA) */
+    --color-accent-gold: 255 213 0;       /* #FFD500 Gold (Small accents / hover) */
+    --color-brand-imperial: 0 41 107;     /* #00296B Imperial Blue (Brand sections / component bg) */
+    --color-innovation: 21 155 120;       /* #159B78 Preserved Innovation Green */
+    --color-cta: 253 197 0;               /* #FDC500 Yellow CTA */
+    --color-cta-text: 16 24 32;           /* #101820 Text on Yellow */
+    --color-cta-hover: 255 213 0;         /* #FFD500 Gold Hover */
   }
 
   * {
@@ -38,7 +57,7 @@
   }
 
   body {
-    @apply bg-theme-bg text-theme-body font-body antialiased selection:bg-brand-secondary selection:text-white;
+    @apply bg-theme-bg text-theme-body font-body antialiased selection:bg-brand-secondary selection:text-white dark:selection:bg-brand-midnight-french dark:selection:text-white;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -56,7 +75,7 @@
   }
 }
 
-/* Custom subtle scrollbar */
+/* Custom subtle scrollbar with Midnight Sky compatibility */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

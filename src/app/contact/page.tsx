@@ -170,7 +170,7 @@ export default function ContactPage() {
                       />
                     </FormField>
 
-                    <Button type="submit" variant="primary" size="md" className="w-full sm:w-auto">
+                    <Button type="submit" variant="cta" size="md" className="w-full sm:w-auto">
                       Submit Official Enquiry
                     </Button>
                   </form>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'cta' | 'blue';
   size?: 'sm' | 'md' | 'lg' | 'icon';
   href?: string;
   isLoading?: boolean;
@@ -24,18 +24,26 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-semibold rounded-md transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none';
+      'inline-flex items-center justify-center font-semibold rounded-md transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent dark:focus-visible:ring-brand-midnight-yellow focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none';
 
     const variants = {
+      // BLUE BUTTON (#003F88 -> Hover #00509D)
       primary:
-        'bg-brand-primary text-white hover:bg-brand-secondary active:scale-[0.99] dark:bg-brand-dark-blue-accent dark:text-brand-dark-bg dark:hover:bg-brand-accent shadow-sm',
+        'bg-brand-primary text-white hover:bg-brand-secondary active:scale-[0.99] dark:bg-brand-midnight-french dark:text-white dark:hover:bg-brand-midnight-azure dark:border-none shadow-sm',
+      blue:
+        'bg-brand-primary text-white hover:bg-brand-secondary active:scale-[0.99] dark:bg-brand-midnight-french dark:text-white dark:hover:bg-brand-midnight-azure dark:border-none shadow-sm',
+      // PRIMARY CTA (#FDC500 -> Hover #FFD500, Text #101820)
+      cta:
+        'bg-brand-primary text-white hover:bg-brand-secondary active:scale-[0.99] dark:bg-brand-midnight-yellow dark:text-[#101820] dark:hover:bg-brand-midnight-gold dark:border-none font-bold shadow-sm',
+      // SECONDARY BUTTON (Transparent background, Border #244365, Text #E5EDF7, Hover #122D50)
       secondary:
-        'bg-theme-surface text-brand-primary border border-theme-border hover:bg-brand-light-bg dark:text-brand-dark-heading dark:hover:bg-brand-dark-elevated shadow-sm',
+        'bg-theme-surface text-brand-primary border border-theme-border hover:bg-brand-light-bg dark:bg-transparent dark:border-brand-dark-border dark:text-[#E5EDF7] dark:hover:bg-brand-dark-elevated shadow-sm',
       outline:
-        'bg-transparent text-brand-innovation-green border border-brand-innovation-green hover:bg-brand-innovation-green/10 dark:text-brand-dark-green-accent dark:border-brand-dark-green-accent',
+        'bg-transparent text-brand-innovation-green border border-brand-innovation-green hover:bg-brand-innovation-green/10 dark:bg-transparent dark:border-brand-dark-border dark:text-[#E5EDF7] dark:hover:bg-brand-dark-elevated',
       ghost:
-        'bg-transparent text-theme-heading hover:bg-theme-surface hover:text-brand-secondary dark:hover:bg-brand-dark-surface',
-      link: 'bg-transparent text-brand-secondary underline-offset-4 hover:underline p-0 h-auto font-medium',
+        'bg-transparent text-theme-heading hover:bg-theme-surface hover:text-brand-secondary dark:text-brand-dark-heading dark:hover:bg-brand-dark-elevated dark:hover:text-brand-midnight-yellow',
+      link:
+        'bg-transparent text-brand-secondary underline-offset-4 hover:underline p-0 h-auto font-medium dark:text-brand-midnight-azure dark:hover:text-brand-midnight-gold',
     };
 
     const sizes = {
@@ -118,4 +126,3 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 Button.displayName = 'Button';
-

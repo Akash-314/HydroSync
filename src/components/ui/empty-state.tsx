@@ -25,17 +25,17 @@ export function EmptyState({
   return (
     <div
       className={cn(
-        'flex flex-col items-center justify-center p-8 sm:p-12 text-center rounded-xl border border-dashed border-theme-border bg-theme-surface/50 max-w-lg mx-auto',
+        'flex flex-col items-center justify-center p-8 sm:p-12 text-center rounded-xl border border-dashed border-theme-border dark:border-brand-dark-border bg-theme-surface/50 dark:bg-brand-dark-surface/50 max-w-lg mx-auto',
         className
       )}
     >
-      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-light-bg text-brand-secondary dark:bg-brand-dark-surface dark:text-brand-dark-blue-accent mb-4">
+      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-light-bg text-brand-secondary dark:bg-brand-dark-elevated dark:text-brand-midnight-azure mb-4">
         {icon || <Inbox className="h-6 w-6" />}
       </div>
-      <h3 className="text-lg font-bold font-heading text-theme-heading">
+      <h3 className="text-lg font-bold font-heading text-theme-heading dark:text-brand-dark-heading">
         {title}
       </h3>
-      <p className="mt-2 text-sm text-theme-body leading-relaxed max-w-sm">
+      <p className="mt-2 text-sm text-theme-body dark:text-brand-dark-body leading-relaxed max-w-sm">
         {description}
       </p>
       {actionLabel && (actionHref || onAction) && (
@@ -54,4 +54,3 @@ export function EmptyState({
     </div>
   );
 }
-

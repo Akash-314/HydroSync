@@ -23,7 +23,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
       </CardHeader>
       <CardContent>
         {service.deliverables && service.deliverables.length > 0 && (
-          <ul className="space-y-2 mt-2 text-xs text-theme-body">
+          <ul className="space-y-2 mt-2 text-xs text-theme-body dark:text-brand-dark-body">
             {service.deliverables.map((item, idx) => (
               <li key={idx} className="flex items-start gap-2">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-brand-innovation-green mt-0.5" />
@@ -37,7 +37,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
         <CardFooter>
           <Link
             href={service.href}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-secondary hover:text-brand-primary dark:hover:text-brand-dark-blue-accent transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-secondary hover:text-brand-primary dark:text-brand-midnight-azure dark:hover:text-brand-midnight-gold transition-colors"
           >
             <span>Explore Technical Specs</span>
             <ArrowRight className="h-3.5 w-3.5" />
@@ -47,4 +47,3 @@ export function ServiceCard({ service }: ServiceCardProps) {
     </Card>
   );
 }
-

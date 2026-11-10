@@ -74,7 +74,7 @@ export default function ServicesPage() {
             </div>
 
             <div className="p-5 rounded-xl border border-theme-border bg-theme-bg/60 text-left">
-              <div className="flex items-center gap-2 mb-2 text-brand-primary dark:text-brand-dark-blue-accent">
+              <div className="flex items-center gap-2 mb-2 text-brand-primary dark:text-brand-midnight-azure">
                 <Wrench className="h-5 w-5" />
                 <span className="font-heading font-bold text-sm text-theme-heading">
                   2. Industrial R&amp;D &amp; Prototyping
@@ -273,7 +273,7 @@ export default function ServicesPage() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-12">
             <div className="lg:col-span-7 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-brand-secondary dark:text-brand-dark-blue-accent">
+              <span className="text-xs font-bold uppercase tracking-wider text-brand-secondary dark:text-brand-midnight-azure">
                 Category 02
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold font-heading text-theme-heading leading-tight">
@@ -538,7 +538,7 @@ export default function ServicesPage() {
       {/* =========================================================================
           FINAL CONTACT & SERVICE ENQUIRY CTA
          ========================================================================= */}
-      <section className="py-16 md:py-20 bg-brand-primary dark:bg-brand-dark-surface text-white">
+      <section className="py-16 md:py-20 bg-brand-primary dark:bg-brand-midnight-imperial text-white">
         <Container className="text-center max-w-3xl">
           <Badge variant="success" className="mb-4">
             Custom Inquiries Welcome
@@ -553,9 +553,9 @@ export default function ServicesPage() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Button
               href="/contact"
-              variant="secondary"
+              variant="cta"
               size="lg"
-              className="bg-white text-brand-primary hover:bg-slate-100 dark:bg-brand-dark-blue-accent dark:text-brand-dark-bg font-bold shadow-md"
+              className="bg-white text-brand-primary hover:bg-slate-100 dark:bg-brand-midnight-yellow dark:text-[#101820] dark:hover:bg-brand-midnight-gold font-bold shadow-md"
             >
               Contact Our Engineers
             </Button>

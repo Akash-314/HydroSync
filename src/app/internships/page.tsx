@@ -648,7 +648,7 @@ export default function InternshipsPage() {
                 <div className="pt-3">
                   <Button
                     type="submit"
-                    variant="primary"
+                    variant="cta"
                     size="lg"
                     isLoading={formStatus === 'submitting'}
                     className="w-full text-sm font-bold shadow-sm"

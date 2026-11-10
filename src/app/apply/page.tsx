@@ -113,7 +113,7 @@ export default function ApplyPage() {
                   <span>Your academic details are processed strictly for course admissions and mentor allocation.</span>
                 </div>
 
-                <Button type="submit" variant="primary" size="lg" className="w-full">
+                <Button type="submit" variant="cta" size="lg" className="w-full">
                   Submit Official Application
                 </Button>
               </form>

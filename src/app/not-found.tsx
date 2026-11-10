@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <div className="flex flex-col items-center justify-center py-24 sm:py-32">
       <Container className="text-center max-w-lg">
-        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-light-bg text-brand-secondary dark:bg-brand-dark-surface dark:text-brand-dark-blue-accent mx-auto mb-6">
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-light-bg text-brand-secondary dark:bg-brand-dark-surface dark:text-brand-midnight-azure mx-auto mb-6">
           <FileQuestion className="h-8 w-8" />
         </div>
         <span className="font-mono text-xs font-bold uppercase tracking-wider text-brand-secondary">

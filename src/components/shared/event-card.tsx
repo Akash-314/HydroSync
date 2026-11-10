@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, MapPin, Users } from 'lucide-react';
+import { Calendar, MapPin } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -21,11 +21,11 @@ export function EventCard({ event, onRegister }: EventCardProps) {
       <CardContent className="p-0 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
         {/* Date block */}
         <div className="flex items-center gap-4">
-          <div className="flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-lg border border-theme-border bg-theme-bg text-center">
-            <span className="text-xs font-semibold uppercase text-brand-secondary tracking-wider">
+          <div className="flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-lg border border-theme-border dark:border-brand-dark-border bg-theme-bg dark:bg-brand-dark-bg text-center">
+            <span className="text-xs font-semibold uppercase text-brand-secondary dark:text-brand-midnight-azure tracking-wider">
               {month}
             </span>
-            <span className="text-xl font-extrabold font-heading text-theme-heading leading-none">
+            <span className="text-xl font-extrabold font-heading text-theme-heading dark:text-brand-dark-heading leading-none">
               {day}
             </span>
           </div>
@@ -39,12 +39,12 @@ export function EventCard({ event, onRegister }: EventCardProps) {
                 </Badge>
               )}
             </div>
-            <h3 className="text-base sm:text-lg font-bold font-heading text-theme-heading">
+            <h3 className="text-base sm:text-lg font-bold font-heading text-theme-heading dark:text-brand-dark-heading">
               {event.title}
             </h3>
-            <div className="flex flex-wrap items-center gap-4 mt-1.5 text-xs text-theme-muted">
+            <div className="flex flex-wrap items-center gap-4 mt-1.5 text-xs text-theme-muted dark:text-brand-dark-muted">
               <span className="flex items-center gap-1">
-                <MapPin className="h-3.5 w-3.5 text-brand-secondary" />
+                <MapPin className="h-3.5 w-3.5 text-brand-secondary dark:text-brand-midnight-azure" />
                 {event.location} ({event.mode})
               </span>
               {event.time && (
@@ -57,10 +57,10 @@ export function EventCard({ event, onRegister }: EventCardProps) {
           </div>
         </div>
 
-        {/* Action Button */}
+        {/* Action Button: School Bus Yellow CTA */}
         <div className="w-full sm:w-auto shrink-0">
           <Button
-            variant="primary"
+            variant="cta"
             size="sm"
             href={`/apply?event=${encodeURIComponent(event.title)}`}
             onClick={onRegister}
@@ -73,4 +73,3 @@ export function EventCard({ event, onRegister }: EventCardProps) {
     </Card>
   );
 }
-
