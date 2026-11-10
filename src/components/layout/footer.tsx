@@ -121,15 +121,17 @@ export function Footer() {
                   {siteConfig.contact.email}
                 </a>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Phone className="h-4 w-4 shrink-0 text-brand-secondary dark:text-brand-midnight-azure" />
-                <a
-                  href={`tel:${siteConfig.contact.phone.replace(/\s+/g, '')}`}
-                  className="hover:text-brand-secondary dark:hover:text-brand-midnight-yellow transition-colors"
-                >
-                  {siteConfig.contact.phone}
-                </a>
-              </div>
+              {siteConfig.contact.phone && (
+                <div className="flex items-center gap-2.5">
+                  <Phone className="h-4 w-4 shrink-0 text-brand-secondary dark:text-brand-midnight-azure" />
+                  <a
+                    href={`tel:${siteConfig.contact.phone.replace(/\s+/g, '')}`}
+                    className="hover:text-brand-secondary dark:hover:text-brand-midnight-yellow transition-colors"
+                  >
+                    {siteConfig.contact.phone}
+                  </a>
+                </div>
+              )}
             </div>
 
             {/* Verified Social Media Links: Facebook, Instagram, YouTube */}

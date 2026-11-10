@@ -4,33 +4,21 @@ import {
   ArrowRight,
   Cpu,
   CheckCircle2,
-  MessageSquare,
   ShieldCheck,
   Award,
   Layers,
   GraduationCap,
   Wrench,
   Building2,
-  Calendar,
   Code2,
   Binary,
   Radio,
   School,
-  ExternalLink,
 } from 'lucide-react';
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { SectionHeader } from '@/components/shared/section-header';
-import { ProjectCard } from '@/components/shared/project-card';
-import { EventCard } from '@/components/shared/event-card';
-import { TestimonialCard } from '@/components/shared/testimonial-card';
-import { EmptyState } from '@/components/ui/empty-state';
-import {
-  FEATURED_PROJECTS,
-  UPCOMING_EVENTS,
-  TESTIMONIALS,
-} from '@/data/mock-data';
 import { siteConfig } from '@/config/site';
 
 export default function HomePage() {
@@ -161,7 +149,7 @@ export default function HomePage() {
 
       {/* =========================================================================
           SECTION 2 — COMPANY HIGHLIGHTS
-          - Display only verified achievements/specifications supplied by the client.
+          - Operational model specifications verified by the company brief.
          ========================================================================= */}
       <section className="py-10 border-b border-theme-border dark:border-brand-dark-border bg-theme-bg dark:bg-brand-dark-bg-alt">
         <Container>
@@ -325,7 +313,7 @@ export default function HomePage() {
 
       {/* =========================================================================
           SECTION 4 — WHAT WE OFFER
-          - 5 core service offerings
+          - Core service offerings aligned with verified brief
          ========================================================================= */}
       <section className="py-16 md:py-20 border-b border-theme-border dark:border-brand-dark-border bg-theme-bg dark:bg-brand-dark-bg-alt">
         <Container>
@@ -364,7 +352,7 @@ export default function HomePage() {
                   Engineering Internship Programs
                 </h3>
                 <p className="text-xs sm:text-sm text-theme-body dark:text-brand-dark-body leading-relaxed">
-                  Structured 4 to 12-week online &amp; offline internship tracks in IoT, Embedded Firmware, and Edge AI backed by physical hardware development boards.
+                  Structured 4 to 24-week online &amp; offline internship tracks in IoT, Embedded Firmware, and Edge AI backed by physical hardware development boards.
                 </p>
               </div>
               <Link
@@ -388,10 +376,10 @@ export default function HomePage() {
                 </p>
               </div>
               <Link
-                href="/projects"
+                href="/services"
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-secondary dark:text-brand-midnight-azure hover:text-brand-primary dark:hover:text-brand-midnight-gold mt-6 transition-colors"
               >
-                <span>Explore Technical Projects</span>
+                <span>Explore Technical Services</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
@@ -453,93 +441,9 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
-          SECTION 5 — FEATURED PROJECTS
+          SECTION 5 — INSTITUTIONAL COLLABORATION STRIP
          ========================================================================= */}
-      <section className="py-16 md:py-20 border-b border-theme-border dark:border-brand-dark-border bg-theme-surface dark:bg-brand-dark-bg">
-        <Container>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-brand-secondary dark:text-brand-midnight-azure mb-1 block">
-                Proof of Engineering
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold font-heading text-theme-heading dark:text-brand-dark-heading tracking-tight">
-                Featured Technical Deployments
-              </h2>
-            </div>
-            <Button href="/projects" variant="secondary" size="sm">
-              <span>View All Projects</span>
-              <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
-            </Button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {FEATURED_PROJECTS.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* =========================================================================
-          SECTION 6 — UPCOMING EVENTS & WORKSHOPS
-         ========================================================================= */}
-      <section className="py-16 md:py-20 border-b border-theme-border dark:border-brand-dark-border bg-theme-bg dark:bg-brand-dark-bg-alt">
-        <Container>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-brand-secondary dark:text-brand-midnight-azure mb-1 block">
-                Hands-on Gatherings
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold font-heading text-theme-heading dark:text-brand-dark-heading tracking-tight">
-                Upcoming Workshops &amp; Hackathons
-              </h2>
-            </div>
-            <Button href="/events" variant="secondary" size="sm">
-              <span>All Scheduled Events</span>
-              <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
-            </Button>
-          </div>
-
-          {UPCOMING_EVENTS && UPCOMING_EVENTS.length > 0 ? (
-            <div className="space-y-4 max-w-4xl">
-              {UPCOMING_EVENTS.map((event) => (
-                <EventCard key={event.id} event={event} />
-              ))}
-            </div>
-          ) : (
-            <EmptyState
-              title="No Public Events Scheduled"
-              description="New hands-on buildathons and firmware clinics are currently being scheduled with partner colleges."
-              actionLabel="Contact Our Events Team"
-              actionHref="/contact"
-            />
-          )}
-        </Container>
-      </section>
-
-      {/* =========================================================================
-          SECTION 7 — VERIFIED TESTIMONIALS
-         ========================================================================= */}
-      <section className="py-16 md:py-20 border-b border-theme-border dark:border-brand-dark-border bg-theme-surface dark:bg-brand-dark-bg">
-        <Container>
-          <SectionHeader
-            eyebrow="Participant &amp; Partner Voices"
-            title="Feedback from the Lab"
-            subtitle="Direct testimonials from students, department heads, and school coordinators who completed our technical programs."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((testimonial) => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* =========================================================================
-          SECTION 8 — INSTITUTIONAL COLLABORATION STRIP
-         ========================================================================= */}
-      <section className="py-12 border-b border-theme-border dark:border-brand-dark-border bg-theme-bg/50 dark:bg-brand-dark-bg-alt">
+      <section className="py-12 border-b border-theme-border dark:border-brand-dark-border bg-theme-surface dark:bg-brand-dark-bg">
         <Container>
           <div className="text-center max-w-2xl mx-auto">
             <span className="text-xs font-bold uppercase tracking-wider text-theme-muted dark:text-brand-dark-muted block mb-3">
@@ -549,15 +453,15 @@ export default function HomePage() {
               HydroSync Innovation Labs partners with academic institutions through structured MoUs, establishing on-premise IoT Centers of Excellence, laboratory hardware calibration, and university-aligned curriculum delivery.
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs font-medium text-theme-heading dark:text-brand-dark-heading max-w-lg mx-auto">
-              <div className="p-3 rounded-lg border border-theme-border dark:border-brand-dark-border bg-theme-surface dark:bg-brand-dark-surface">
+              <div className="p-3 rounded-lg border border-theme-border dark:border-brand-dark-border bg-theme-bg dark:bg-brand-dark-surface">
                 <School className="h-6 w-6 text-brand-secondary dark:text-brand-midnight-azure mx-auto mb-2" />
                 <span>K-12 STEM ATL Labs</span>
               </div>
-              <div className="p-3 rounded-lg border border-theme-border dark:border-brand-dark-border bg-theme-surface dark:bg-brand-dark-surface">
+              <div className="p-3 rounded-lg border border-theme-border dark:border-brand-dark-border bg-theme-bg dark:bg-brand-dark-surface">
                 <Building2 className="h-6 w-6 text-brand-secondary dark:text-brand-midnight-azure mx-auto mb-2" />
                 <span>College MoUs</span>
               </div>
-              <div className="p-3 rounded-lg border border-theme-border dark:border-brand-dark-border bg-theme-surface dark:bg-brand-dark-surface col-span-2 sm:col-span-1">
+              <div className="p-3 rounded-lg border border-theme-border dark:border-brand-dark-border bg-theme-bg dark:bg-brand-dark-surface col-span-2 sm:col-span-1">
                 <Wrench className="h-6 w-6 text-brand-primary dark:text-brand-midnight-azure mx-auto mb-2" />
                 <span>Faculty FDP Clinics</span>
               </div>
@@ -576,7 +480,7 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
-          SECTION 9 — FINAL CTA (Deep Imperial Blue Section with Gold/Yellow CTA)
+          SECTION 6 — FINAL CTA (Deep Imperial Blue Section with Gold/Yellow CTA)
          ========================================================================= */}
       <section className="py-16 md:py-20 bg-brand-primary dark:bg-brand-midnight-imperial text-white transition-colors">
         <Container className="text-center max-w-3xl">
@@ -587,7 +491,7 @@ export default function HomePage() {
             Ready to Engineer Connected Systems or Upskill Your Campus?
           </h2>
           <p className="mt-4 text-base text-white/85 leading-relaxed">
-            Whether you are an engineering student seeking a hands-on hardware internship, a college department head planning an IoT lab, or a corporate client needing firmware prototyping, our team is ready to assist.
+            Whether you are an engineering student seeking a hands-on hardware internship, a college department head planning an IoT lab, or an enterprise client needing custom electronics prototyping, our team is ready to assist.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -606,15 +510,6 @@ export default function HomePage() {
               className="border-white/40 text-white hover:bg-white/10 dark:border-white/40 dark:text-white dark:hover:bg-white/10"
             >
               Contact Directory
-            </Button>
-            <Button
-              href={`https://wa.me/${siteConfig.contact.whatsapp}?text=Hello%20HydroSync%2C%20I%20would%20like%20to%20enquire%20about%20your%20technical%20programs.`}
-              variant="ghost"
-              size="lg"
-              className="text-white hover:bg-white/10"
-            >
-              <MessageSquare className="mr-2 h-4 w-4" />
-              Chat on WhatsApp
             </Button>
           </div>
         </Container>

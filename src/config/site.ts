@@ -6,10 +6,13 @@ export const siteConfig = {
     'Operating in technology, IoT, Embedded Systems, AI, technical training, internships, projects and innovation.',
   contact: {
     email: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || 'contact@hydrosync.in',
-    phone: process.env.NEXT_PUBLIC_SUPPORT_PHONE || '+91 98765 43210',
-    whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210',
-    address: 'Electronics City, Phase 1, Bengaluru, Karnataka 560100, India',
-    workingHours: 'Mon - Sat: 9:00 AM - 6:30 PM IST',
+    phone: process.env.NEXT_PUBLIC_SUPPORT_PHONE || null,
+    whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || null,
+    city: 'Bengaluru',
+    state: 'Karnataka',
+    country: 'India',
+    address: 'Bengaluru, Karnataka, India',
+    workingHours: 'Monday - Saturday: 9:00 AM - 6:30 PM IST',
   },
   socials: {
     facebook: 'https://facebook.com/hydrosyncinnovations',
@@ -83,4 +86,3 @@ export const siteConfig = {
     { label: 'Sitemap', href: '/sitemap' },
   ],
 };
-
