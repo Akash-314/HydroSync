@@ -139,3 +139,4 @@ The following items are formal commercial inputs pending from HydroSync Innovati
    - Official college/university logos authorized for display on `/partners` and `/for-colleges`.
 4. **Vercel Project Setup:**
    - Connect the repository in the Vercel dashboard and add the environment variables detailed in `ENVIRONMENT_VARIABLES.md`.
+
