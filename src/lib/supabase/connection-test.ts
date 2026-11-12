@@ -48,7 +48,7 @@ export async function testSupabaseConnection(): Promise<ConnectionTestResult> {
       connected: false,
       status: 'unconfigured',
       message:
-        'Supabase credentials are not configured yet. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in your local environment (.env.local) to connect.',
+        'Supabase credentials are not configured yet. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY (or NEXT_PUBLIC_SUPABASE_ANON_KEY) in your environment (.env.local or Vercel) to connect.',
       details: {
         hasUrl: config.hasUrl,
         hasKey: config.hasKey,
@@ -89,8 +89,8 @@ export async function testSupabaseConnection(): Promise<ConnectionTestResult> {
 
     const latencyMs = Date.now() - startTime;
 
-    // PostgreSQL code 42P01 means table does not exist yet (migrations need to be run)
-    if (error && error.code === '42P01') {
+    // PostgreSQL code 42P01 or PostgREST PGRST205 means table does not exist yet (migrations need to be run)
+    if (error && (error.code === '42P01' || error.code === 'PGRST205' || error.message.includes('schema cache'))) {
       return {
         configured: true,
         connected: false,
@@ -183,3 +183,4 @@ export async function testSupabaseConnection(): Promise<ConnectionTestResult> {
     };
   }
 }
+

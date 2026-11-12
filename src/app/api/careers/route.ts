@@ -38,6 +38,26 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, message: 'Please provide the position applied for.' }, { status: 400 });
     }
 
+    if (resumeUrl && typeof resumeUrl === 'string' && resumeUrl.trim() !== '') {
+      const cleanUrl = resumeUrl.trim();
+      if (!cleanUrl.startsWith('https://') && !cleanUrl.startsWith('http://')) {
+        return NextResponse.json(
+          { success: false, message: 'Resume URL must start with https:// or http://' },
+          { status: 400 }
+        );
+      }
+    }
+
+    if (portfolioOrLinkedin && typeof portfolioOrLinkedin === 'string' && portfolioOrLinkedin.trim() !== '') {
+      const cleanUrl = portfolioOrLinkedin.trim();
+      if (!cleanUrl.startsWith('https://') && !cleanUrl.startsWith('http://')) {
+        return NextResponse.json(
+          { success: false, message: 'Portfolio/LinkedIn URL must start with https:// or http://' },
+          { status: 400 }
+        );
+      }
+    }
+
     const applicationId = `HS-CAR-${Date.now().toString(36).toUpperCase()}`;
 
     // Persist to Supabase PostgreSQL if configured
@@ -69,3 +89,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, message: 'A server error occurred.' }, { status: 500 });
   }
 }
+

@@ -86,6 +86,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    if (resumeUrl && typeof resumeUrl === 'string' && resumeUrl.trim() !== '') {
+      const cleanUrl = resumeUrl.trim();
+      if (!cleanUrl.startsWith('https://') && !cleanUrl.startsWith('http://')) {
+        return NextResponse.json(
+          { success: false, message: 'Resume URL must start with https:// or http://' },
+          { status: 400 }
+        );
+      }
+    }
+
     if (!consent) {
       return NextResponse.json(
         { success: false, message: 'You must confirm the details and agree to communication.' },

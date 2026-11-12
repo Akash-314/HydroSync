@@ -9,22 +9,26 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
+const supabaseKey = (
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+)?.trim();
 
 /**
  * Checks whether valid Supabase credentials have been configured.
- * Validates that the URL starts with https:// and the anon key is present and non-placeholder.
+ * Validates that the URL starts with https:// and the publishable/anon key is present and non-placeholder.
  */
 export function isSupabaseConfigured(): boolean {
-  if (!supabaseUrl || !supabaseAnonKey) {
+  if (!supabaseUrl || !supabaseKey) {
     return false;
   }
   const isPlaceholderUrl =
     supabaseUrl.includes('your-project-id') ||
     supabaseUrl.includes('example.supabase.co');
   const isPlaceholderKey =
-    supabaseAnonKey.includes('your-supabase-anon-key') ||
-    supabaseAnonKey.length < 20;
+    supabaseKey.includes('your-supabase-publishable-key') ||
+    supabaseKey.includes('your-supabase-anon-key') ||
+    supabaseKey.length < 20;
 
   return (
     supabaseUrl.startsWith('https://') &&
@@ -38,7 +42,11 @@ export function isSupabaseConfigured(): boolean {
  */
 export function getSupabaseConfigStatus() {
   const isUrlSet = Boolean(supabaseUrl && !supabaseUrl.includes('your-project-id'));
-  const isKeySet = Boolean(supabaseAnonKey && !supabaseAnonKey.includes('your-supabase-anon-key'));
+  const isKeySet = Boolean(
+    supabaseKey &&
+    !supabaseKey.includes('your-supabase-publishable-key') &&
+    !supabaseKey.includes('your-supabase-anon-key')
+  );
   const configured = isSupabaseConfigured();
 
   return {
@@ -64,8 +72,8 @@ export function getSupabaseBrowserClient(): SupabaseClient<Database> | null {
     return null;
   }
 
-  if (!browserClient && supabaseUrl && supabaseAnonKey) {
-    browserClient = createClient<Database>(supabaseUrl, supabaseAnonKey, {
+  if (!browserClient && supabaseUrl && supabaseKey) {
+    browserClient = createClient<Database>(supabaseUrl, supabaseKey, {
       auth: {
         persistSession: true,
         autoRefreshToken: true,
@@ -84,3 +92,4 @@ export const supabase = {
   isConfigured: isSupabaseConfigured,
   status: getSupabaseConfigStatus,
 };
+

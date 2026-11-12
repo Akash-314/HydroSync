@@ -10,24 +10,27 @@ import type { Database } from './types';
 import { isSupabaseConfigured } from './client';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
+const supabaseKey = (
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+)?.trim();
 const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
 
 let serverClient: SupabaseClient<Database> | null = null;
 let adminClient: SupabaseClient<Database> | null = null;
 
 /**
- * Returns a server-side Supabase client using the standard anonymous / publishable key.
+ * Returns a server-side Supabase client using the standard publishable/anon key.
  * This respects Row Level Security (RLS) policies configured in PostgreSQL.
  * Returns null if Supabase is unconfigured.
  */
 export function getSupabaseServerClient(): SupabaseClient<Database> | null {
-  if (!isSupabaseConfigured() || !supabaseUrl || !supabaseAnonKey) {
+  if (!isSupabaseConfigured() || !supabaseUrl || !supabaseKey) {
     return null;
   }
 
   if (!serverClient) {
-    serverClient = createClient<Database>(supabaseUrl, supabaseAnonKey, {
+    serverClient = createClient<Database>(supabaseUrl, supabaseKey, {
       auth: {
         persistSession: false,
         autoRefreshToken: false,
@@ -72,3 +75,4 @@ export function getSupabaseAdminClient(): SupabaseClient<Database> | null {
 export function getActiveServerClient(): SupabaseClient<Database> | null {
   return getSupabaseAdminClient() || getSupabaseServerClient();
 }
+

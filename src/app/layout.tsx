@@ -17,7 +17,10 @@ const inter = Inter({
   display: 'swap',
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://hydrosync.in';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     template: '%s | HydroSync Innovations LLP',
     default: 'HydroSync Innovations LLP | IoT, Embedded Systems & AI',
@@ -34,6 +37,27 @@ export const metadata: Metadata = {
     'Atal Tinkering Labs',
     'College MoUs',
   ],
+  authors: [{ name: 'HydroSync Innovations LLP' }],
+  creator: 'HydroSync Innovations LLP',
+  openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    url: siteUrl,
+    siteName: 'HydroSync Innovations LLP',
+    title: 'HydroSync Innovations LLP | IoT, Embedded Systems & AI',
+    description:
+      'HydroSync Innovations LLP operates in technology, IoT, Embedded Systems, AI, technical training, internships, projects and innovation.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'HydroSync Innovations LLP | IoT, Embedded Systems & AI',
+    description:
+      'HydroSync Innovations LLP operates in technology, IoT, Embedded Systems, AI, technical training, internships, projects and innovation.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

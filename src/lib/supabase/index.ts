@@ -31,3 +31,4 @@ export const db = {
   careers: services.submitCareerApplication,
   newsletter: services.submitNewsletterSubscription,
 };
+

@@ -443,3 +443,4 @@ if (isSupabaseConfigured()) {
 ```
 
 All operations are pre-wired to fallback gracefully if credentials are not present, ensuring 100% uptime and smooth user experience at all times.
+
