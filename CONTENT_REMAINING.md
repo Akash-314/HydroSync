@@ -51,3 +51,4 @@ This document itemizes all authentic, verified content retained across the platf
    - Contains authentic internship domain tracks (Embedded Firmware, IoT Architecture, Edge AI, PCB Design) and flexible durations without fabricated stipend promises.
 3. **`src/config/site.ts`**:
    - Anchored exclusively to verified corporate metadata (`HydroSync Innovations LLP`, `contact@hydrosync.in`, `Bengaluru, Karnataka, India`).
+

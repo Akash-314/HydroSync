@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { db, isSupabaseConfigured } from '@/lib/supabase';
 
 export async function POST(req: NextRequest) {
   try {
@@ -89,7 +90,25 @@ export async function POST(req: NextRequest) {
       message: message?.trim() || null,
     };
 
-    // 3. Optional webhook dispatch
+    // 3. Persist to Supabase PostgreSQL if configured
+    if (isSupabaseConfigured()) {
+      const dbResult = await db.courses({
+        enquiry_id: enquiryId,
+        full_name: fullName.trim(),
+        email: email.trim().toLowerCase(),
+        phone: cleanPhone,
+        college: college.trim(),
+        course_of_interest: courseOfInterest,
+        learning_mode: learningMode,
+        message: message?.trim() || null,
+      });
+
+      if (!dbResult.success && dbResult.error) {
+        console.warn('[Courses API] Supabase persistence note:', dbResult.error);
+      }
+    }
+
+    // 4. Optional webhook dispatch
     const webhookUrl = process.env.LEADS_WEBHOOK_URL;
     if (webhookUrl && webhookUrl.startsWith('http')) {
       try {

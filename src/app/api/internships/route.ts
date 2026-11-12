@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { db, isSupabaseConfigured } from '@/lib/supabase';
 
 export async function POST(req: NextRequest) {
   try {
@@ -111,7 +112,29 @@ export async function POST(req: NextRequest) {
       additionalMessage: additionalMessage?.trim() || null,
     };
 
-    // 3. Dispatch to external lead webhook if configured
+    // 3. Persist to Supabase PostgreSQL if configured
+    if (isSupabaseConfigured()) {
+      const dbResult = await db.internships({
+        application_id: applicationId,
+        full_name: fullName.trim(),
+        email: email.trim().toLowerCase(),
+        phone: cleanPhone,
+        college: college.trim(),
+        branch: branch.trim(),
+        year_of_study: yearOfStudy,
+        area_of_interest: areaOfInterest || preferredProgram,
+        preferred_program: preferredProgram,
+        preferred_mode: preferredMode,
+        resume_url: resumeUrl?.trim() || null,
+        additional_message: additionalMessage?.trim() || null,
+      });
+
+      if (!dbResult.success && dbResult.error) {
+        console.warn('[Internships API] Supabase persistence note:', dbResult.error);
+      }
+    }
+
+    // 4. Dispatch to external lead webhook if configured
     const webhookUrl = process.env.LEADS_WEBHOOK_URL;
     if (webhookUrl && webhookUrl.startsWith('http')) {
       try {

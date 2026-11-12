@@ -22,11 +22,24 @@ export function Footer() {
     }
 
     setNewsletterStatus('loading');
-    // Simulated clean client-side submission
-    await new Promise((resolve) => setTimeout(resolve, 600));
-    setNewsletterStatus('success');
-    setFeedbackMessage('Thank you for subscribing to HydroSync technical insights!');
-    setNewsletterEmail('');
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: newsletterEmail, sourcePage: 'footer' }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || 'Subscription failed. Please try again.');
+      }
+      setNewsletterStatus('success');
+      setFeedbackMessage(data.message || 'Thank you for subscribing to HydroSync technical insights!');
+      setNewsletterEmail('');
+    } catch (err: unknown) {
+      setNewsletterStatus('error');
+      const msg = err instanceof Error ? err.message : 'Unable to complete subscription.';
+      setFeedbackMessage(msg);
+    }
   };
 
   return (

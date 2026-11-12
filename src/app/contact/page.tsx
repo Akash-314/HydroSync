@@ -13,10 +13,40 @@ import { siteConfig } from '@/config/site';
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setErrorMessage(null);
+
+    const formData = new FormData(e.currentTarget);
+    const fullName = (formData.get('fullName') as string) || '';
+    const email = (formData.get('email') as string) || '';
+    const phone = (formData.get('phone') as string) || '';
+    const category = (formData.get('category') as string) || 'Other';
+    const message = (formData.get('message') as string) || '';
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fullName, email, phone, category, message }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || 'Failed to submit enquiry. Please try again.');
+      }
+
+      setSubmitted(true);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'An error occurred while submitting your enquiry.';
+      setErrorMessage(msg);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -120,21 +150,27 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    {errorMessage && (
+                      <div className="p-3 rounded-lg text-xs font-medium bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400">
+                        {errorMessage}
+                      </div>
+                    )}
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <FormField label="Full Name" htmlFor="fullName" required>
-                        <Input id="fullName" placeholder="Enter your full name" required />
+                        <Input id="fullName" name="fullName" placeholder="Enter your full name" required />
                       </FormField>
                       <FormField label="Email Address" htmlFor="email" required>
-                        <Input id="email" type="email" placeholder="name@organization.com" required />
+                        <Input id="email" name="email" type="email" placeholder="name@organization.com" required />
                       </FormField>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <FormField label="Phone Number" htmlFor="phone" required>
-                        <Input id="phone" type="tel" placeholder="10-digit mobile number" required />
+                        <Input id="phone" name="phone" type="tel" placeholder="10-digit mobile number" required />
                       </FormField>
                       <FormField label="Enquiry Category" htmlFor="category" required>
-                        <Select id="category" defaultValue="Internship">
+                        <Select id="category" name="category" defaultValue="Internship">
                           <option value="Internship">Internship Application</option>
                           <option value="Course">Technical Course Enquiry</option>
                           <option value="School">School STEM / ATL Setup</option>
@@ -148,13 +184,14 @@ export default function ContactPage() {
                     <FormField label="Message / Requirement Details" htmlFor="message" required>
                       <Textarea
                         id="message"
+                        name="message"
                         placeholder="Please share specific requirements, college/organization name, or question..."
                         required
                       />
                     </FormField>
 
-                    <Button type="submit" variant="cta" size="md" className="w-full sm:w-auto">
-                      Submit Official Enquiry
+                    <Button type="submit" variant="cta" size="md" className="w-full sm:w-auto" disabled={loading}>
+                      {loading ? 'Submitting Enquiry...' : 'Submit Official Enquiry'}
                     </Button>
                   </form>
                 )}

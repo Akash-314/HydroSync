@@ -43,3 +43,4 @@ The platform now operates exclusively on **authentic, verified, and client-suppl
 2. **Zero Fictional Metrics:** No fabricated numbers (e.g. "10,000+ students trained", "99.8% precision") are claimed.
 3. **Zero Fictional Endorsements:** No simulated quotes or stock photos posing as clients or alumni exist on the platform.
 4. **Honest Informational States:** Any section where formal documentation is pending explicitly states this fact to the visitor, preserving corporate credibility and legal compliance.
+

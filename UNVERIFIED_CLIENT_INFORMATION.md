@@ -63,3 +63,4 @@ Once provided, these items can be directly configured in `src/config/site.ts` or
   - Direct links to published articles in reputable newspapers, tech portals, or university journals.
 - [ ] **Awards & Recognition:**
   - Legitimate competition wins, hackathon mentorship awards, or government grants with verification certificates.
+

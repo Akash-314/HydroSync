@@ -84,3 +84,4 @@ The following files contained hardcoded fictional records and were deleted from 
 1. `src/data/mock-data.ts` (contained mock team, mock testimonials, mock statistics)
 2. `src/data/events.ts` (contained mock event calendar records)
 3. `src/data/live-classes.ts` (contained mock live class cohorts and instructor listings)
+
