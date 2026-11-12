@@ -47,12 +47,21 @@ export const metadata: Metadata = {
     title: 'HydroSync Innovations LLP | IoT, Embedded Systems & AI',
     description:
       'HydroSync Innovations LLP operates in technology, IoT, Embedded Systems, AI, technical training, internships, projects and innovation.',
+    images: [
+      {
+        url: '/images/logo/hydrosync-logo.png',
+        width: 928,
+        height: 805,
+        alt: 'HydroSync Innovations LLP Official Logo',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'HydroSync Innovations LLP | IoT, Embedded Systems & AI',
     description:
       'HydroSync Innovations LLP operates in technology, IoT, Embedded Systems, AI, technical training, internships, projects and innovation.',
+    images: ['/images/logo/hydrosync-logo.png'],
   },
   robots: {
     index: true,

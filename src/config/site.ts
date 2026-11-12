@@ -2,6 +2,7 @@ export const siteConfig = {
   name: 'HydroSync Innovations LLP',
   shortName: 'HydroSync',
   tagline: 'Technology • IoT • Embedded Systems • AI',
+  motto: 'Innovation for a Healthier Tomorrow',
   description:
     'Operating in technology, IoT, Embedded Systems, AI, technical training, internships, projects and innovation.',
   contact: {

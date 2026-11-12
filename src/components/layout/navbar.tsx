@@ -34,10 +34,18 @@ export function Navbar() {
   const institutionsRef = React.useRef<HTMLDivElement>(null);
   const resourcesRef = React.useRef<HTMLDivElement>(null);
 
-  // Scroll detection for compact sticky header
+  // Throttled scroll detection for compact sticky header
   React.useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 12);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrolled = window.scrollY > 12;
+          setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
