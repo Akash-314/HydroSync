@@ -63,20 +63,20 @@ export default function AboutPage() {
           SECTION 2 — COMPANY OVERVIEW
           - Structured summary of corporate identity and dual operational model
          ========================================================================= */}
-      <section className="py-16 md:py-20 border-b border-theme-border bg-theme-surface">
+      <section className="py-20 md:py-28 border-b border-theme-border bg-theme-surface">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-brand-secondary dark:text-brand-midnight-azure">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 space-y-5">
+              <span className="text-xs font-mono font-bold uppercase tracking-[0.16em] text-brand-secondary dark:text-brand-midnight-azure">
                 Who We Are
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold font-heading text-theme-heading leading-tight tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold font-heading text-theme-heading leading-[1.15] tracking-tight">
                 An Engineering Enterprise Dedicated to Real Silicon, Scalable Telemetry &amp; Workforce Competence
               </h2>
-              <p className="text-sm sm:text-base text-theme-body leading-relaxed">
+              <p className="text-base text-theme-body leading-relaxed">
                 HydroSync Innovations LLP is a specialized technology and technical education enterprise. We operate at the intersection of production-grade electronics engineering and practical workforce enablement.
               </p>
-              <p className="text-sm text-theme-body leading-relaxed">
+              <p className="text-base text-theme-body leading-relaxed">
                 Rather than treating software in isolation, our work centers around physical computing: bare-metal microcontrollers, industrial printed circuit board (PCB) design, deterministic real-time operating systems (RTOS), low-power IoT telemetry, and edge artificial intelligence inferencing.
               </p>
             </div>
@@ -115,15 +115,15 @@ export default function AboutPage() {
           SECTION 3 — OUR STORY (Split Layout)
           - Editorial narrative with technical architecture graphic
          ========================================================================= */}
-      <section className="py-16 md:py-20 border-b border-theme-border bg-theme-bg">
+      <section className="py-20 md:py-28 border-b border-theme-border bg-theme-bg">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left 6 Cols: Narrative */}
-            <div className="lg:col-span-6 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-brand-secondary dark:text-brand-midnight-azure">
+            <div className="lg:col-span-6 space-y-5">
+              <span className="text-xs font-mono font-bold uppercase tracking-[0.16em] text-brand-secondary dark:text-brand-midnight-azure">
                 Our Genesis
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold font-heading text-theme-heading leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-[38px] font-bold font-heading text-theme-heading leading-tight tracking-tight">
                 Born From a Simple Engineering Reality: Simulation Is Not Enough
               </h2>
               <div className="space-y-3 text-sm text-theme-body leading-relaxed">

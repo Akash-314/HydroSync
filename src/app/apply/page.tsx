@@ -19,9 +19,9 @@ export default function ApplyPage() {
         breadcrumbs={[{ label: 'Apply Now' }]}
       />
 
-      <section className="py-16 md:py-20">
+      <section className="py-20 md:py-28">
         <Container className="max-w-3xl">
-          <div className="rounded-2xl border border-theme-border bg-theme-surface p-6 sm:p-10 shadow-sm">
+          <div className="rounded-2xl border border-theme-border bg-theme-surface p-8 sm:p-12 shadow-sm">
             <ApplyForm />
           </div>
         </Container>

@@ -21,16 +21,16 @@ export default function ContactPage() {
         breadcrumbs={[{ label: 'Contact' }]}
       />
 
-      <section className="py-16 md:py-20">
+      <section className="py-20 md:py-28">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             {/* Left 5 Cols: Directory Information (Server Rendered) */}
             <div className="lg:col-span-5 space-y-6">
               <div>
-                <h2 className="text-xl font-bold font-heading text-theme-heading dark:text-brand-dark-heading">
+                <h2 className="text-2xl sm:text-3xl font-bold font-heading text-theme-heading dark:text-brand-dark-heading leading-snug">
                   {siteConfig.name}
                 </h2>
-                <p className="mt-2 text-sm text-theme-body dark:text-brand-dark-body leading-relaxed">
+                <p className="mt-3 text-base text-theme-body dark:text-brand-dark-body leading-relaxed">
                   Have an enquiry about industrial IoT prototyping, college MoUs, or upcoming technical internships? Connect with our engineering and admissions desk.
                 </p>
               </div>

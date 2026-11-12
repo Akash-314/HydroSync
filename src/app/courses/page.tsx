@@ -208,12 +208,12 @@ export default function CoursesPage() {
          ========================================================================= */}
       <section id="course-listings" className="py-16 md:py-20 border-b border-theme-border bg-theme-bg">
         <Container>
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center justify-between mb-10 pb-4 border-b border-theme-border/60">
             <div>
-              <span className="text-xs font-mono font-semibold text-brand-secondary uppercase">
+              <span className="text-xs font-mono font-bold uppercase tracking-[0.16em] text-brand-secondary">
                 Curriculum Catalog
               </span>
-              <h2 className="text-xl sm:text-2xl font-bold font-heading text-theme-heading mt-0.5">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-theme-heading mt-1">
                 Showing {filteredCourses.length} {filteredCourses.length === 1 ? 'Program' : 'Programs'}
               </h2>
             </div>
@@ -221,58 +221,57 @@ export default function CoursesPage() {
               <button
                 type="button"
                 onClick={() => setSelectedCategory('All Categories')}
-                className="text-xs font-medium text-brand-secondary hover:underline"
+                className="text-xs font-semibold text-brand-secondary hover:underline"
               >
                 Reset Filter
               </button>
             )}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredCourses.map((course) => {
               const isExpanded = expandedCourseId === course.id;
 
               return (
                 <div
                   key={course.id}
-                  className="rounded-2xl border border-theme-border bg-theme-surface p-6 flex flex-col justify-between shadow-xs hover:border-brand-secondary/60 transition-colors"
+                  className="rounded-2xl border border-theme-border bg-theme-surface p-7 sm:p-8 flex flex-col justify-between shadow-xs hover:border-brand-secondary/60 transition-all duration-200"
                 >
                   <div className="space-y-4">
                     {/* Header Badges */}
                     <div className="flex items-center justify-between gap-2 border-b border-theme-border/70 pb-3">
                       <Badge variant="iot">{course.category}</Badge>
-                      <span className="flex items-center gap-1 text-xs text-theme-muted font-medium">
-                        <Clock className="h-3.5 w-3.5 text-brand-secondary" />
+                      <span className="font-mono text-xs text-theme-muted font-semibold tracking-tight">
                         {course.duration}
                       </span>
                     </div>
 
                     {/* Title & Short Description */}
-                    <div>
-                      <h3 className="text-lg font-bold font-heading text-theme-heading leading-snug">
+                    <div className="space-y-2">
+                      <h3 className="text-xl sm:text-2xl font-bold font-heading text-theme-heading leading-snug">
                         {course.title}
                       </h3>
-                      <p className="mt-2 text-xs text-theme-body leading-relaxed line-clamp-3">
+                      <p className="text-sm text-theme-body leading-relaxed line-clamp-3">
                         {course.shortDescription}
                       </p>
                     </div>
 
-                    {/* Metadata Box: Mode & Fee */}
-                    <div className="space-y-2 p-3 rounded-lg border border-theme-border bg-theme-bg/60 text-xs">
+                    {/* Structured Metadata Box */}
+                    <div className="space-y-2 p-3.5 rounded-xl border border-theme-border bg-theme-bg/60 text-xs font-mono">
                       <div className="flex items-center justify-between">
-                        <span className="text-[11px] text-theme-muted">Learning Mode:</span>
-                        <span className="font-semibold text-theme-heading">{course.mode}</span>
+                        <span className="text-[11px] uppercase tracking-wider text-theme-muted">Mode:</span>
+                        <span className="font-semibold text-theme-heading font-sans">{course.mode}</span>
                       </div>
-                      <div className="flex items-center justify-between pt-1 border-t border-theme-border/60">
-                        <span className="text-[11px] text-theme-muted">Fee Schedule:</span>
-                        <span className="font-semibold text-brand-secondary text-[11px]">{course.fee}</span>
+                      <div className="flex items-center justify-between pt-1.5 border-t border-theme-border/60">
+                        <span className="text-[11px] uppercase tracking-wider text-theme-muted">Schedule &amp; Fee:</span>
+                        <span className="font-semibold text-brand-secondary text-[11px] font-sans">{course.fee}</span>
                       </div>
                     </div>
 
                     {/* Hardware Kit Included Tag */}
                     {course.hardwareKitIncluded && (
-                      <div className="flex items-center gap-2 p-2 rounded-md bg-brand-light-bg dark:bg-brand-dark-elevated border border-brand-secondary/30 dark:border-brand-dark-border text-[11px] font-medium text-brand-primary dark:text-brand-dark-heading">
-                        <Cpu className="h-4 w-4 shrink-0 text-brand-secondary" />
+                      <div className="flex items-center gap-2 p-2.5 rounded-lg bg-brand-light-bg dark:bg-brand-dark-elevated border border-brand-secondary/30 dark:border-brand-dark-border text-xs font-semibold text-brand-innovation-green">
+                        <Cpu className="h-4 w-4 shrink-0" />
                         <span>Hands-on Hardware Kit Included in Batch</span>
                       </div>
                     )}

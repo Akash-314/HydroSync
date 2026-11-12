@@ -16,12 +16,12 @@ export function Card({
   return (
     <div
       className={cn(
-        'rounded-lg border border-theme-border dark:border-brand-dark-border shadow-sm overflow-hidden flex flex-col transition-colors',
+        'rounded-xl border border-theme-border dark:border-brand-dark-border shadow-xs overflow-hidden flex flex-col transition-all duration-200',
         elevated
           ? 'bg-theme-elevated dark:bg-brand-dark-elevated text-theme-body dark:text-brand-dark-body'
           : 'bg-theme-surface dark:bg-brand-dark-surface text-theme-body dark:text-brand-dark-body',
         hoverable &&
-          'transition-all duration-200 hover:border-brand-secondary/60 dark:hover:border-brand-midnight-azure hover:-translate-y-0.5',
+          'hover:border-brand-secondary/60 dark:hover:border-brand-midnight-azure hover:-translate-y-1 hover:shadow-md',
         className
       )}
       {...props}
@@ -37,7 +37,7 @@ export function CardHeader({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn('p-6 pb-3 space-y-1.5', className)} {...props}>
+    <div className={cn('p-6 sm:p-7 pb-4 space-y-2', className)} {...props}>
       {children}
     </div>
   );
@@ -52,7 +52,7 @@ export function CardTitle({
   return (
     <Component
       className={cn(
-        'text-lg md:text-xl font-bold font-heading text-theme-heading dark:text-brand-dark-heading leading-tight tracking-tight',
+        'text-xl sm:text-2xl font-bold font-heading text-theme-heading dark:text-brand-dark-heading leading-snug tracking-tight',
         className
       )}
       {...props}
@@ -69,7 +69,7 @@ export function CardDescription({
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
-      className={cn('text-sm text-theme-body dark:text-brand-dark-body leading-relaxed', className)}
+      className={cn('text-sm sm:text-[15px] text-theme-body dark:text-brand-dark-body leading-relaxed', className)}
       {...props}
     >
       {children}
@@ -83,7 +83,7 @@ export function CardContent({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn('p-6 pt-0 flex-1', className)} {...props}>
+    <div className={cn('p-6 sm:p-7 pt-0 flex-1', className)} {...props}>
       {children}
     </div>
   );
@@ -97,7 +97,7 @@ export function CardFooter({
   return (
     <div
       className={cn(
-        'p-6 pt-0 mt-auto flex items-center justify-between border-t border-theme-border/60 dark:border-brand-dark-border/60 pt-4',
+        'p-6 sm:p-7 pt-4 mt-auto flex items-center justify-between border-t border-theme-border/60 dark:border-brand-dark-border/60',
         className
       )}
       {...props}

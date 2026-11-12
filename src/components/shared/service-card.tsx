@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ServiceItem } from '@/types';
@@ -11,36 +11,45 @@ export interface ServiceCardProps {
 
 export function ServiceCard({ service }: ServiceCardProps) {
   return (
-    <Card hoverable className="h-full">
-      <CardHeader>
-        <div className="flex items-center justify-between gap-2 mb-2">
+    <Card hoverable className="h-full flex flex-col border border-theme-border dark:border-brand-dark-border bg-theme-surface dark:bg-brand-dark-surface">
+      <CardHeader className="space-y-3">
+        <div className="flex items-center justify-between gap-2">
           <Badge variant={service.category === 'IoT' ? 'iot' : service.category === 'AI' ? 'ai' : 'embedded'}>
             {service.category}
           </Badge>
         </div>
-        <CardTitle>{service.title}</CardTitle>
-        <CardDescription>{service.description}</CardDescription>
+        <CardTitle className="text-xl sm:text-[22px] font-bold font-heading text-theme-heading dark:text-brand-dark-heading leading-snug">
+          {service.title}
+        </CardTitle>
+        <CardDescription className="text-sm text-theme-body dark:text-brand-dark-body leading-relaxed">
+          {service.description}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         {service.deliverables && service.deliverables.length > 0 && (
-          <ul className="space-y-2 mt-2 text-xs text-theme-body dark:text-brand-dark-body">
-            {service.deliverables.map((item, idx) => (
-              <li key={idx} className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 shrink-0 text-brand-innovation-green mt-0.5" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="pt-2 border-t border-theme-border/60 dark:border-brand-dark-border/60">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-theme-muted dark:text-brand-dark-muted block mb-2">
+              Deliverables &amp; Artifacts
+            </span>
+            <ul className="space-y-2 text-xs text-theme-body dark:text-brand-dark-body">
+              {service.deliverables.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-brand-secondary dark:bg-brand-midnight-azure mt-1.5 shrink-0" />
+                  <span className="leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </CardContent>
       {service.href && (
-        <CardFooter>
+        <CardFooter className="pt-4 border-t border-theme-border/60 dark:border-brand-dark-border/60">
           <Link
             href={service.href}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-secondary hover:text-brand-primary dark:text-brand-midnight-azure dark:hover:text-brand-midnight-gold transition-colors"
+            className="group/link inline-flex items-center gap-1.5 text-xs font-semibold text-brand-secondary hover:text-brand-primary dark:text-brand-midnight-azure dark:hover:text-brand-midnight-gold transition-colors"
           >
             <span>Explore Technical Specs</span>
-            <ArrowRight className="h-3.5 w-3.5" />
+            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover/link:translate-x-1" />
           </Link>
         </CardFooter>
       )}

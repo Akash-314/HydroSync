@@ -170,32 +170,32 @@ export function Navbar() {
           className="hidden xl:flex items-center gap-0.5 text-[13.5px] font-medium"
         >
           {/* 1. Home */}
-          <Link href="/" className={getNavLinkClass(pathname === '/')}>
+          <Link href="/" prefetch={true} className={getNavLinkClass(pathname === '/')}>
             Home
           </Link>
 
           {/* 2. About Us */}
-          <Link href="/about" className={getNavLinkClass(pathname === '/about')}>
+          <Link href="/about" prefetch={true} className={getNavLinkClass(pathname === '/about')}>
             About Us
           </Link>
 
           {/* 3. Services */}
-          <Link href="/services" className={getNavLinkClass(pathname === '/services')}>
+          <Link href="/services" prefetch={true} className={getNavLinkClass(pathname === '/services')}>
             Services
           </Link>
 
           {/* 4. Internships */}
-          <Link href="/internships" className={getNavLinkClass(pathname === '/internships')}>
+          <Link href="/internships" prefetch={true} className={getNavLinkClass(pathname === '/internships')}>
             Internships
           </Link>
 
           {/* 5. Courses */}
-          <Link href="/courses" className={getNavLinkClass(pathname === '/courses')}>
+          <Link href="/courses" prefetch={true} className={getNavLinkClass(pathname === '/courses')}>
             Courses
           </Link>
 
           {/* 6. Events */}
-          <Link href="/events" className={getNavLinkClass(pathname === '/events')}>
+          <Link href="/events" prefetch={true} className={getNavLinkClass(pathname === '/events')}>
             Events
           </Link>
 
@@ -335,12 +335,12 @@ export function Navbar() {
           </div>
 
           {/* 10. Team */}
-          <Link href="/team" className={getNavLinkClass(pathname === '/team')}>
+          <Link href="/team" prefetch={true} className={getNavLinkClass(pathname === '/team')}>
             Team
           </Link>
 
           {/* 11. Contact */}
-          <Link href="/contact" className={getNavLinkClass(pathname === '/contact')}>
+          <Link href="/contact" prefetch={true} className={getNavLinkClass(pathname === '/contact')}>
             Contact
           </Link>
         </nav>

@@ -79,8 +79,10 @@ const config: Config = {
         xs: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
       },
       fontFamily: {
-        heading: ['var(--font-manrope)', 'sans-serif'],
+        heading: ['var(--font-space-grotesk)', 'sans-serif'],
+        display: ['var(--font-space-grotesk)', 'sans-serif'],
         body: ['var(--font-inter)', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
       maxWidth: {
         container: '1240px',

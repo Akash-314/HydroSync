@@ -58,41 +58,41 @@ export default function ServicesPage() {
       {/* =========================================================================
           2. SERVICE OVERVIEW & THREE MAIN CATEGORIES
          ========================================================================= */}
-      <section className="py-12 border-b border-theme-border bg-theme-surface">
+      <section className="py-16 md:py-20 border-b border-theme-border bg-theme-surface">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-5 rounded-xl border border-theme-border bg-theme-bg/60 text-left">
-              <div className="flex items-center gap-2 mb-2 text-brand-secondary">
-                <GraduationCap className="h-5 w-5" />
-                <span className="font-heading font-bold text-sm text-theme-heading">
-                  1. Workforce &amp; Academic Programs
-                </span>
-              </div>
-              <p className="text-xs text-theme-body leading-relaxed">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-7 rounded-2xl border border-theme-border bg-theme-bg/60 text-left space-y-2">
+              <span className="font-mono text-xs font-bold text-brand-secondary uppercase tracking-wider block">
+                01 / WORKFORCE &amp; ACADEMIA
+              </span>
+              <h3 className="font-heading font-bold text-lg sm:text-xl text-theme-heading">
+                Workforce &amp; Academic Programs
+              </h3>
+              <p className="text-sm text-theme-body leading-relaxed">
                 Technical training, hardware internships, turnkey product kits, and K-12/College institutional workshops.
               </p>
             </div>
 
-            <div className="p-5 rounded-xl border border-theme-border bg-theme-bg/60 text-left">
-              <div className="flex items-center gap-2 mb-2 text-brand-primary dark:text-brand-midnight-azure">
-                <Wrench className="h-5 w-5" />
-                <span className="font-heading font-bold text-sm text-theme-heading">
-                  2. Industrial R&amp;D &amp; Prototyping
-                </span>
-              </div>
-              <p className="text-xs text-theme-body leading-relaxed">
+            <div className="p-7 rounded-2xl border border-theme-border bg-theme-bg/60 text-left space-y-2">
+              <span className="font-mono text-xs font-bold text-brand-primary dark:text-brand-midnight-azure uppercase tracking-wider block">
+                02 / R&amp;D &amp; FABRICATION
+              </span>
+              <h3 className="font-heading font-bold text-lg sm:text-xl text-theme-heading">
+                Industrial R&amp;D &amp; Prototyping
+              </h3>
+              <p className="text-sm text-theme-body leading-relaxed">
                 Schematic capture, multi-layer PCB design, experimental R&amp;D, and rapid hardware proof-of-concept fabrication.
               </p>
             </div>
 
-            <div className="p-5 rounded-xl border border-theme-border bg-theme-bg/60 text-left">
-              <div className="flex items-center gap-2 mb-2 text-brand-innovation-green">
-                <Radio className="h-5 w-5" />
-                <span className="font-heading font-bold text-sm text-theme-heading">
-                  3. Enterprise Solutions &amp; Consulting
-                </span>
-              </div>
-              <p className="text-xs text-theme-body leading-relaxed">
+            <div className="p-7 rounded-2xl border border-theme-border bg-theme-bg/60 text-left space-y-2">
+              <span className="font-mono text-xs font-bold text-brand-innovation-green uppercase tracking-wider block">
+                03 / SYSTEMS &amp; AUDITS
+              </span>
+              <h3 className="font-heading font-bold text-lg sm:text-xl text-theme-heading">
+                Enterprise Solutions &amp; Consulting
+              </h3>
+              <p className="text-sm text-theme-body leading-relaxed">
                 Bespoke technology modules, architecture audits, and full-stack IoT gateways paired with TinyML vision systems.
               </p>
             </div>

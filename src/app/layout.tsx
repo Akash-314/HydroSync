@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
-import { Manrope, Inter } from 'next/font/google';
+import { Space_Grotesk, Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 
-const manrope = Manrope({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-manrope',
+  variable: '--font-space-grotesk',
   display: 'swap',
 });
 
@@ -75,7 +75,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${manrope.variable} ${inter.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body className="min-h-screen flex flex-col bg-theme-bg text-theme-body antialiased selection:bg-brand-secondary selection:text-white">
         <ThemeProvider
           attribute="class"

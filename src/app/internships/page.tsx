@@ -205,19 +205,19 @@ export default function InternshipsPage() {
           SECTIONS 2, 3, 4, 5, 6, 7 & 8 — AVAILABLE PROGRAMS & DETAILED SPECS
           - Program Descriptions, Durations, Modes, Eligibility, Benefits, Stipends
          ========================================================================= */}
-      <section id="available-programs" className="py-16 md:py-20 border-b border-theme-border bg-theme-bg">
+      <section id="available-programs" className="py-20 md:py-28 border-b border-theme-border bg-theme-bg">
         <Container>
           <SectionHeader
             eyebrow="Specialization Tracks"
             title="Available Internship Programs"
-            subtitle="Select an engineering track aligned with your career goals. Every candidate works on physical silicon."
+            subtitle="Select an engineering track aligned with your career goals. Every candidate works directly on physical silicon."
           />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {INTERNSHIP_PROGRAMS.map((program) => (
               <div
                 key={program.id}
-                className="rounded-2xl border border-theme-border bg-theme-surface p-6 sm:p-8 flex flex-col justify-between shadow-xs hover:border-brand-secondary/60 transition-colors"
+                className="rounded-2xl border border-theme-border bg-theme-surface p-7 sm:p-8 flex flex-col justify-between shadow-xs hover:border-brand-secondary/60 transition-all duration-200"
               >
                 <div className="space-y-5">
                   {/* Header & Badges */}
@@ -235,20 +235,19 @@ export default function InternshipsPage() {
                     >
                       {program.domain}
                     </Badge>
-                    <div className="flex items-center gap-3 text-xs text-theme-muted font-medium">
-                      <span className="flex items-center gap-1">
-                        <Clock className="h-3.5 w-3.5 text-brand-secondary" />
+                    <div className="flex items-center gap-3 font-mono text-xs text-theme-muted font-semibold tracking-tight">
+                      <span>
                         {program.durations[0]} &ndash; {program.durations[program.durations.length - 1]}
                       </span>
                     </div>
                   </div>
 
                   {/* Title & Description */}
-                  <div>
-                    <h3 className="text-xl font-bold font-heading text-theme-heading">
+                  <div className="space-y-2">
+                    <h3 className="text-xl sm:text-2xl font-bold font-heading text-theme-heading leading-snug">
                       {program.title}
                     </h3>
-                    <p className="mt-2 text-xs sm:text-sm text-theme-body leading-relaxed">
+                    <p className="text-sm text-theme-body leading-relaxed">
                       {program.summary}
                     </p>
                   </div>
