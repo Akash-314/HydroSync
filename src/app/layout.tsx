@@ -39,6 +39,14 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'HydroSync Innovations LLP' }],
   creator: 'HydroSync Innovations LLP',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/images/logo/hydrosync-logo-mark.png', sizes: '512x512', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_IN',

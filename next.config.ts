@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
       process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
   },
   async headers() {
+    if (process.env.NODE_ENV !== 'production') {
+      return [];
+    }
     return [
       {
         source: '/((?!api|_next/static|_next/image|favicon.ico).*)',

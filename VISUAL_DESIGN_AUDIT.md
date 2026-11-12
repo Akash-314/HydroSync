@@ -99,3 +99,4 @@ The HydroSync Innovations LLP web platform currently possesses strong foundation
    - Elevate [`src/app/page.tsx`](file:///c:/Users/itsak/OneDrive/Desktop/Projects/HydroSync/src/app/page.tsx) with commanding 60–76px hero typography, asymmetrical visual balance, clear category discovery, and scannable hardware kit highlights.
 5. **Verification & Testing:**
    - Execute TypeScript verification and production build to confirm zero regressions and optimal Core Web Vitals.
+
