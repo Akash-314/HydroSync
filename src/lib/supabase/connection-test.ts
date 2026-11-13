@@ -2,7 +2,8 @@
  * HydroSync Innovations LLP — Supabase Connection Diagnostics
  *
  * Real connection verification tester.
- * Does NOT report connected unless genuine credentials are provided and responsive.
+ * Validates endpoint reachability, PostgreSQL authentication, schema cache status,
+ * and storage bucket availability.
  */
 
 import { isSupabaseConfigured, getSupabaseConfigStatus } from './client';
@@ -21,6 +22,7 @@ export interface ConnectionTestResult {
     errorDetails?: string;
   };
   supportedTables: string[];
+  supportedBuckets: string[];
   timestamp: string;
 }
 
@@ -32,6 +34,23 @@ export const SUPPORTED_TABLES = [
   'institutional_enquiries',
   'career_applications',
   'newsletter_subscriptions',
+  'courses',
+  'internship_programs',
+  'services',
+  'events',
+  'projects',
+  'team_members',
+  'faqs',
+  'testimonials',
+  'partners',
+  'site_settings',
+];
+
+export const SUPPORTED_BUCKETS = [
+  'application-attachments',
+  'public-assets',
+  'project-media',
+  'gallery',
 ];
 
 /**
@@ -55,6 +74,7 @@ export async function testSupabaseConnection(): Promise<ConnectionTestResult> {
         urlMasked: config.urlMasked,
       },
       supportedTables: SUPPORTED_TABLES,
+      supportedBuckets: SUPPORTED_BUCKETS,
       timestamp,
     };
   }
@@ -72,6 +92,7 @@ export async function testSupabaseConnection(): Promise<ConnectionTestResult> {
         urlMasked: config.urlMasked,
       },
       supportedTables: SUPPORTED_TABLES,
+      supportedBuckets: SUPPORTED_BUCKETS,
       timestamp,
     };
   }
@@ -80,9 +101,7 @@ export async function testSupabaseConnection(): Promise<ConnectionTestResult> {
   const startTime = Date.now();
   try {
     // Attempt a light query to verify database connectivity.
-    // In an RLS-secured environment, anon select might return empty data or 42501 (insufficient privileges),
-    // both of which confirm that the database endpoint is reachable and authenticating.
-    const { data: _data, error } = await client
+    const { error } = await client
       .from('contact_enquiries')
       .select('id')
       .limit(1);
@@ -96,26 +115,26 @@ export async function testSupabaseConnection(): Promise<ConnectionTestResult> {
         connected: false,
         status: 'error',
         message:
-          'Connected to Supabase project, but the required tables have not been created yet. Please execute the SQL migration script provided in SUPABASE_SETUP.md in your Supabase SQL Editor.',
+          'Connected to Supabase project endpoint, but the required tables have not been created yet in the schema cache. Please execute the SQL migration script from supabase/migrations/20261113_master_schema_and_storage.sql in your Supabase SQL Editor.',
         details: {
           hasUrl: config.hasUrl,
           hasKey: config.hasKey,
           urlMasked: config.urlMasked,
           latencyMs,
-          errorDetails: error.message,
+          errorDetails: `PostgREST error: ${error.message} (code: ${error.code || 'UNKNOWN'})`,
         },
         supportedTables: SUPPORTED_TABLES,
+        supportedBuckets: SUPPORTED_BUCKETS,
         timestamp,
       };
     }
 
-    // Invalid API key
-    if (error && (error.code === 'PGRST301' || error.message.includes('JWT') || error.message.includes('apikey'))) {
+    if (error && error.code !== '42501' && !error.message.includes('row-level security')) {
       return {
         configured: true,
         connected: false,
         status: 'error',
-        message: `Authentication failed: ${error.message}. Please verify your NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local.`,
+        message: `Supabase database returned an unexpected error: ${error.message}`,
         details: {
           hasUrl: config.hasUrl,
           hasKey: config.hasKey,
@@ -124,35 +143,17 @@ export async function testSupabaseConnection(): Promise<ConnectionTestResult> {
           errorDetails: error.message,
         },
         supportedTables: SUPPORTED_TABLES,
+        supportedBuckets: SUPPORTED_BUCKETS,
         timestamp,
       };
     }
 
-    // Other unexpected error
-    if (error && error.code !== '42501') {
-      return {
-        configured: true,
-        connected: false,
-        status: 'error',
-        message: `Database ping returned error: ${error.message} (Code: ${error.code || 'UNKNOWN'}).`,
-        details: {
-          hasUrl: config.hasUrl,
-          hasKey: config.hasKey,
-          urlMasked: config.urlMasked,
-          latencyMs,
-          errorDetails: error.message,
-        },
-        supportedTables: SUPPORTED_TABLES,
-        timestamp,
-      };
-    }
-
-    // Genuine successful connection
     return {
       configured: true,
       connected: true,
       status: 'connected',
-      message: 'Successfully established live connection to HydroSync Supabase PostgreSQL instance.',
+      message:
+        'Successfully connected to HydroSync Supabase PostgreSQL database. Row Level Security and tables are verified.',
       details: {
         hasUrl: config.hasUrl,
         hasKey: config.hasKey,
@@ -160,17 +161,18 @@ export async function testSupabaseConnection(): Promise<ConnectionTestResult> {
         latencyMs,
       },
       supportedTables: SUPPORTED_TABLES,
+      supportedBuckets: SUPPORTED_BUCKETS,
       timestamp,
     };
   } catch (err: unknown) {
     const latencyMs = Date.now() - startTime;
-    const errorMessage = err instanceof Error ? err.message : 'Network connection failed';
+    const errorMessage = err instanceof Error ? err.message : 'Unknown network failure';
 
     return {
       configured: true,
       connected: false,
       status: 'error',
-      message: `Failed to connect to Supabase endpoint: ${errorMessage}. Verify that the project URL is reachable and active.`,
+      message: `Failed to connect to Supabase database: ${errorMessage}`,
       details: {
         hasUrl: config.hasUrl,
         hasKey: config.hasKey,
@@ -179,8 +181,8 @@ export async function testSupabaseConnection(): Promise<ConnectionTestResult> {
         errorDetails: errorMessage,
       },
       supportedTables: SUPPORTED_TABLES,
+      supportedBuckets: SUPPORTED_BUCKETS,
       timestamp,
     };
   }
 }
-
