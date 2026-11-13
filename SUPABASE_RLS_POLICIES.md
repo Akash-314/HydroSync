@@ -59,3 +59,4 @@ const s = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PU
 s.from('contact_enquiries').select('*').then(r => console.log('RLS Status:', r.data?.length === 0 ? 'PROTECTED (Empty/Denied)' : 'LEAK'));
 "
 ```
+

@@ -365,3 +365,4 @@ CREATE POLICY "site_settings_admin_all"
     TO authenticated
     USING (true)
     WITH CHECK (true);
+

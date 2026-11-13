@@ -43,3 +43,4 @@ This document provides the exhaustive, feature-to-database architectural mapping
        │
        └─► [Supabase Storage (Private attachments via signed URLs; Public media via CDN)]
 ```
+

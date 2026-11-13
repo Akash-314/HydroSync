@@ -72,3 +72,4 @@ The codebase, database service layer, TypeScript models, API route handlers, sto
 
 **Immediate Next Action for Full Database Persistence:**
 Open the [Supabase Dashboard SQL Editor](https://supabase.com/dashboard/project/svujimucfycrbxkemxbt/sql), copy the contents of `supabase/migrations/20261113_master_schema_and_storage.sql`, and click **Run**. Once executed, the schema cache will activate all 17 tables and 4 storage buckets instantly.
+

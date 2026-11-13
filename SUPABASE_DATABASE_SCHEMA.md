@@ -192,3 +192,4 @@ Stores verified subscribers for the HydroSync Engineering Dispatch newsletter.
 - `internship_applications.preferred_program` optionally references `internship_programs(title)` or `internship_programs(slug)`.
 - `event_registrations.event_or_class` optionally references `events(title)` or `events(slug)`.
 - Unmatched or custom queries default gracefully without throwing foreign-key constraint violations on client forms.
+

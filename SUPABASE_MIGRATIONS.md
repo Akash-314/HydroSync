@@ -70,3 +70,4 @@ which will return:
   "message": "Successfully connected to HydroSync Supabase PostgreSQL database. Row Level Security and tables are verified."
 }
 ```
+

@@ -78,3 +78,4 @@ CREATE POLICY "allow_admin_manage_all_storage"
     TO authenticated
     USING (true)
     WITH CHECK (true);
+

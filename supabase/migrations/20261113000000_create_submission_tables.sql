@@ -293,3 +293,4 @@ CREATE POLICY "newsletter_admin_select"
     FOR SELECT
     TO authenticated
     USING (true);
+

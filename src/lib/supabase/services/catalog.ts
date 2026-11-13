@@ -221,3 +221,4 @@ export async function getActivePartners(): Promise<DatabaseResponse<PartnerRow[]
     return { success: false, data: null, error: msg, isConfigured: true };
   }
 }
+

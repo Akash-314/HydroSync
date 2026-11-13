@@ -12,3 +12,4 @@ try {
 } catch (err) {
   console.warn('[HydroSync Cache] Warning: could not clean .next directory:', err.message);
 }
+

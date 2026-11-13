@@ -136,3 +136,4 @@ export function getPublicMediaUrl(
   if (!supabaseUrl || !path) return null;
   return `${supabaseUrl}/storage/v1/object/public/${bucket}/${path}`;
 }
+

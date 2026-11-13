@@ -98,3 +98,4 @@ To provision all 4 buckets and their security policies in one command, execute t
 supabase/migrations/20261113000002_create_storage_buckets.sql
 ```
 or run `supabase/migrations/20261113_master_schema_and_storage.sql` in the **Supabase SQL Editor**.
+
