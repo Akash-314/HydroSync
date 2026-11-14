@@ -115,6 +115,4 @@ async function runAudit() {
   console.log('AUDIT SUMMARY: Architecture, Schemas, Policies & Services Verified.');
   console.log('================================================================\n');
 }
-
 runAudit();
-

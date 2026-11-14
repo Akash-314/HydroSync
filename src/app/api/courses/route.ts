@@ -142,3 +142,29 @@ export async function POST(req: NextRequest) {
   }
 }
 
+
+
+export async function GET() {
+  try {
+    const { getActiveServerClient } = await import('@/lib/supabase/server');
+    const client = getActiveServerClient();
+    if (client) {
+      const { data, error } = await client
+        .from('courses')
+        .select('*')
+        .eq('is_published', true)
+        .order('display_order', { ascending: true });
+
+      if (!error && data && data.length > 0) {
+        return NextResponse.json({ success: true, courses: data });
+      }
+    }
+
+    // Fallback to static courses data
+    const { COURSES_DATA } = await import('@/data/courses');
+    return NextResponse.json({ success: true, courses: COURSES_DATA });
+  } catch (err: unknown) {
+    const { COURSES_DATA } = await import('@/data/courses');
+    return NextResponse.json({ success: true, courses: COURSES_DATA });
+  }
+}

@@ -179,3 +179,27 @@ export async function POST(req: NextRequest) {
   }
 }
 
+
+
+export async function GET() {
+  try {
+    const { getActiveServerClient } = await import('@/lib/supabase/server');
+    const client = getActiveServerClient();
+    if (client) {
+      const { data, error } = await client
+        .from('internship_programs')
+        .select('*')
+        .eq('is_active', true);
+
+      if (!error && data && data.length > 0) {
+        return NextResponse.json({ success: true, programs: data });
+      }
+    }
+
+    const { INTERNSHIP_PROGRAMS } = await import('@/data/internships');
+    return NextResponse.json({ success: true, programs: INTERNSHIP_PROGRAMS });
+  } catch (err: unknown) {
+    const { INTERNSHIP_PROGRAMS } = await import('@/data/internships');
+    return NextResponse.json({ success: true, programs: INTERNSHIP_PROGRAMS });
+  }
+}

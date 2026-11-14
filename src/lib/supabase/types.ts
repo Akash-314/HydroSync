@@ -84,6 +84,8 @@ export type InsertInternshipApplication = {
   additional_message?: string | null;
   status?: 'pending' | 'reviewed' | 'shortlisted' | 'interviewed' | 'rejected' | 'accepted';
   metadata?: Json | null;
+  created_at?: string;
+  updated_at?: string;
 };
 
 // 3. Course Enquiries
@@ -407,6 +409,301 @@ export type SiteSettingRow = {
 // -----------------------------------------------------------------------------
 // Database Schema Map for SupabaseClient<Database>
 // -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// PART 3: ADMIN & MANAGEMENT TYPES
+// -----------------------------------------------------------------------------
+
+export type AdminRole = 'owner' | 'super_admin' | 'manager' | 'course_manager' | 'internship_manager' | 'content_editor';
+
+// 18. Admin Users
+export type AdminUserRow = {
+  id: string;
+  email: string;
+  full_name: string;
+  role: AdminRole;
+  is_active: boolean;
+  invited_by: string | null;
+  last_sign_in_at: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type InsertAdminUser = {
+  id?: string;
+  auth_user_id?: string | null;
+  email: string;
+  full_name: string;
+  role?: AdminRole;
+  is_active?: boolean;
+  invited_by?: string | null;
+  created_at?: string;
+  updated_at?: string;
+};
+
+// 19. Admin Activity Logs
+export type AdminActivityLogRow = {
+  id: string;
+  admin_id: string | null;
+  admin_email: string;
+  action: string;
+  entity_type: string;
+  entity_id: string | null;
+  details: Json;
+  created_at: string;
+};
+
+export type InsertAdminActivityLog = {
+  admin_id?: string | null;
+  admin_email: string;
+  action: string;
+  entity_type: string;
+  entity_id?: string | null;
+  details?: Json;
+};
+
+// 20. Application Status History
+export type ApplicationStatusHistoryRow = {
+  id: string;
+  application_id: string;
+  application_type: 'internship' | 'career' | 'course' | 'contact' | 'event' | 'institutional';
+  old_status: string;
+  new_status: string;
+  changed_by: string | null;
+  changed_by_email: string | null;
+  notes: string | null;
+  created_at: string;
+};
+
+export type InsertApplicationStatusHistory = {
+  application_id: string;
+  application_type: 'internship' | 'career' | 'course' | 'contact' | 'event' | 'institutional';
+  old_status: string;
+  new_status: string;
+  changed_by?: string | null;
+  changed_by_email?: string | null;
+  notes?: string | null;
+};
+
+// 21. Course Batches
+export type CourseBatchRow = {
+  id: string;
+  course_id: string;
+  batch_name: string;
+  batch_code: string;
+  start_date: string;
+  end_date: string | null;
+  schedule: string | null;
+  learning_mode: 'Online Live' | 'Hands-on Classroom' | 'Hybrid';
+  capacity: number;
+  seats_booked: number;
+  enrollment_open_date: string | null;
+  enrollment_close_date: string | null;
+  is_open: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
+export type InsertCourseBatch = {
+  course_id: string;
+  batch_name: string;
+  batch_code: string;
+  start_date: string;
+  end_date?: string | null;
+  schedule?: string | null;
+  learning_mode: 'Online Live' | 'Hands-on Classroom' | 'Hybrid';
+  capacity?: number;
+  seats_booked?: number;
+  enrollment_open_date?: string | null;
+  enrollment_close_date?: string | null;
+  is_open?: boolean;
+};
+
+// 22. Internship Batches
+export type InternshipBatchRow = {
+  id: string;
+  program_id: string;
+  batch_name: string;
+  batch_code: string;
+  start_date: string;
+  end_date: string | null;
+  duration_weeks: number;
+  mode: 'Online' | 'Offline' | 'Hybrid';
+  capacity: number;
+  seats_enrolled: number;
+  application_deadline: string | null;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
+export type InsertInternshipBatch = {
+  program_id: string;
+  batch_name: string;
+  batch_code: string;
+  start_date: string;
+  end_date?: string | null;
+  duration_weeks?: number;
+  mode: 'Online' | 'Offline' | 'Hybrid';
+  capacity?: number;
+  seats_enrolled?: number;
+  application_deadline?: string | null;
+  is_active?: boolean;
+};
+
+// 23. Internship Form Fields
+export type InternshipFormFieldRow = {
+  id: string;
+  field_key: string;
+  label: string;
+  field_type: 'text' | 'email' | 'tel' | 'select' | 'radio' | 'textarea' | 'file' | 'checkbox';
+  placeholder: string | null;
+  help_text: string | null;
+  is_required: boolean;
+  options: Json;
+  display_order: number;
+  is_enabled: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
+export type InsertInternshipFormField = {
+  id?: string;
+  field_key: string;
+  label: string;
+  field_type: 'text' | 'email' | 'tel' | 'select' | 'radio' | 'textarea' | 'file' | 'checkbox';
+  placeholder?: string | null;
+  help_text?: string | null;
+  is_required?: boolean;
+  options?: Json;
+  display_order?: number;
+  is_enabled?: boolean;
+  created_at?: string;
+  updated_at?: string;
+};
+
+// 24. Page Contents (CMS)
+export type PageContentRow = {
+  id: string;
+  page_slug: string;
+  section_key: string;
+  title: string | null;
+  subtitle: string | null;
+  content: string | null;
+  media_url: string | null;
+  cta_text: string | null;
+  cta_url: string | null;
+  secondary_cta_text: string | null;
+  secondary_cta_url: string | null;
+  extra_data: Json;
+  display_order: number;
+  is_published: boolean;
+  status: 'draft' | 'published' | 'archived';
+  created_at: string;
+  updated_at: string;
+};
+
+export type InsertPageContent = {
+  id?: string;
+  page_slug: string;
+  section_key: string;
+  title?: string | null;
+  subtitle?: string | null;
+  content?: string | null;
+  media_url?: string | null;
+  cta_text?: string | null;
+  cta_url?: string | null;
+  secondary_cta_text?: string | null;
+  secondary_cta_url?: string | null;
+  extra_data?: Json;
+  display_order?: number;
+  is_published?: boolean;
+  status?: 'draft' | 'published' | 'archived';
+  created_at?: string;
+  updated_at?: string;
+};
+
+// 25. Content Revisions
+export type ContentRevisionRow = {
+  id: string;
+  page_slug: string;
+  section_key: string;
+  version_number: number;
+  snapshot: Json;
+  created_by: string | null;
+  created_at: string;
+};
+
+export type InsertContentRevision = {
+  page_slug: string;
+  section_key: string;
+  version_number: number;
+  snapshot: Json;
+  created_by?: string | null;
+};
+
+// 26. Blog Posts
+export type BlogPostRow = {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  cover_image_url: string | null;
+  author_name: string;
+  category: string;
+  tags: string[];
+  read_time_minutes: number;
+  is_published: boolean;
+  published_at: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type InsertBlogPost = {
+  id?: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  cover_image_url?: string | null;
+  author_name?: string;
+  category?: string;
+  tags?: string[];
+  read_time_minutes?: number;
+  is_published?: boolean;
+  published_at?: string | null;
+  created_at?: string;
+  updated_at?: string;
+};
+
+// 27. Gallery Items
+export type GalleryItemRow = {
+  id: string;
+  created_at: string;
+  updated_at: string;
+  title: string;
+  category: string;
+  image_url: string;
+  caption: string | null;
+  display_order: number;
+  is_published: boolean;
+  metadata: Json | null;
+};
+
+export type InsertGalleryItem = {
+  id?: string;
+  title: string;
+  category?: string;
+  image_url: string;
+  caption?: string | null;
+  display_order?: number;
+  is_published?: boolean;
+  metadata?: Json | null;
+  created_at?: string;
+  updated_at?: string;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -510,6 +807,66 @@ export type Database = {
         Row: SiteSettingRow;
         Insert: SiteSettingRow;
         Update: Partial<SiteSettingRow>;
+        Relationships: [];
+      };
+      admin_users: {
+        Row: AdminUserRow;
+        Insert: InsertAdminUser;
+        Update: Partial<InsertAdminUser>;
+        Relationships: [];
+      };
+      admin_activity_logs: {
+        Row: AdminActivityLogRow;
+        Insert: InsertAdminActivityLog;
+        Update: Partial<InsertAdminActivityLog>;
+        Relationships: [];
+      };
+      application_status_history: {
+        Row: ApplicationStatusHistoryRow;
+        Insert: InsertApplicationStatusHistory;
+        Update: Partial<InsertApplicationStatusHistory>;
+        Relationships: [];
+      };
+      course_batches: {
+        Row: CourseBatchRow;
+        Insert: InsertCourseBatch;
+        Update: Partial<InsertCourseBatch>;
+        Relationships: [];
+      };
+      internship_batches: {
+        Row: InternshipBatchRow;
+        Insert: InsertInternshipBatch;
+        Update: Partial<InsertInternshipBatch>;
+        Relationships: [];
+      };
+      internship_form_fields: {
+        Row: InternshipFormFieldRow;
+        Insert: InsertInternshipFormField;
+        Update: Partial<InsertInternshipFormField>;
+        Relationships: [];
+      };
+      page_contents: {
+        Row: PageContentRow;
+        Insert: InsertPageContent;
+        Update: Partial<InsertPageContent>;
+        Relationships: [];
+      };
+      content_revisions: {
+        Row: ContentRevisionRow;
+        Insert: InsertContentRevision;
+        Update: Partial<InsertContentRevision>;
+        Relationships: [];
+      };
+      blog_posts: {
+        Row: BlogPostRow;
+        Insert: InsertBlogPost;
+        Update: Partial<InsertBlogPost>;
+        Relationships: [];
+      };
+      gallery_items: {
+        Row: GalleryItemRow;
+        Insert: InsertGalleryItem;
+        Update: Partial<InsertGalleryItem>;
         Relationships: [];
       };
     };

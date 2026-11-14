@@ -138,3 +138,26 @@ export async function POST(req: NextRequest) {
   }
 }
 
+
+
+export async function GET() {
+  try {
+    const { getActiveServerClient } = await import('@/lib/supabase/server');
+    const client = getActiveServerClient();
+    if (client) {
+      const { data, error } = await client
+        .from('events')
+        .select('*')
+        .eq('is_open', true)
+        .order('start_date', { ascending: true });
+
+      if (!error && data) {
+        return NextResponse.json({ success: true, events: data });
+      }
+    }
+
+    return NextResponse.json({ success: true, events: [] });
+  } catch (err: unknown) {
+    return NextResponse.json({ success: true, events: [] });
+  }
+}

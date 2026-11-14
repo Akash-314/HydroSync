@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import { Space_Grotesk, Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
-import { Navbar } from '@/components/layout/navbar';
-import { Footer } from '@/components/layout/footer';
+import { SiteLayoutWrapper } from '@/components/layout/site-layout-wrapper';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -93,9 +92,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <SiteLayoutWrapper>{children}</SiteLayoutWrapper>
         </ThemeProvider>
       </body>
     </html>
