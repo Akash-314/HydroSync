@@ -37,3 +37,4 @@ export default async function EditTeamMemberPage({
 
   return <TeamEditor initialMember={member} isNew={false} />;
 }
+

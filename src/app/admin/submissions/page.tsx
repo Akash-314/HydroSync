@@ -470,3 +470,4 @@ export default function AdminSubmissionsPage() {
     </div>
   );
 }
+

@@ -37,3 +37,4 @@ export default async function EditProjectPage({
 
   return <ProjectEditor initialProject={project} isNew={false} />;
 }
+

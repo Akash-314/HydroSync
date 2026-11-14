@@ -55,3 +55,4 @@
 3. **Syllabus Builder**: Custom module adder, week duration counter, topics tagger, and ordering controls work smoothly.
 4. **Submissions Inbox**: Tabbed navigation displays live counts across all 7 inquiry streams; status updates immediately reflect without reload; CSV exports contain all non-relational fields.
 5. **Visual Page CMS**: Sections can be added, edited, reordered, shown/hidden; version history logs each revision and allows instant rollback.
+

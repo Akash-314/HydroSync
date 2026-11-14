@@ -66,3 +66,4 @@ The master SQL script creates 4 buckets:
 2. `project-media` (Public: Yes) - R&D photography, oscilloscope screenshots.
 3. `gallery` (Public: Yes) - Campus sessions, laboratory photos.
 4. `application-attachments` (Public: No) - Private candidate resumes accessible only via signed 1-hour URLs.
+

@@ -346,15 +346,21 @@ export function Navbar() {
           </Link>
         </nav>
 
-        {/* Desktop Header Actions (Theme Toggle + Sign In + Apply Now CTA) */}
-        <div className="hidden lg:flex items-center gap-3 shrink-0">
+        {/* Desktop Header Actions (Theme Toggle + Sign In / Sign Up + Apply Now CTA) */}
+        <div className="hidden lg:flex items-center gap-2.5 shrink-0">
           <ThemeToggle />
           <Link
             href="/admin/login"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-theme-muted hover:text-theme-heading hover:bg-theme-bg/60 transition-colors"
+            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-theme-muted hover:text-theme-heading hover:bg-theme-bg/60 transition-colors"
           >
             <LogIn className="h-3.5 w-3.5" />
             <span>Sign In</span>
+          </Link>
+          <Link
+            href="/signup"
+            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-brand-secondary hover:text-brand-primary hover:bg-brand-secondary/10 transition-colors"
+          >
+            <span>Sign Up</span>
           </Link>
           <Button
             href="/apply"
@@ -577,15 +583,24 @@ export function Navbar() {
               Contact Directory
             </Link>
 
-            {/* Portal Sign In Link */}
-            <Link
-              href="/admin/login"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-semibold text-brand-secondary dark:text-brand-midnight-yellow hover:bg-theme-bg dark:hover:bg-brand-dark-surface transition-colors"
-            >
-              <LogIn className="h-4 w-4" />
-              <span>Portal Sign In</span>
-            </Link>
+            {/* Portal Sign In & Sign Up Links */}
+            <div className="grid grid-cols-2 gap-2 pt-2">
+              <Link
+                href="/admin/login"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-semibold border border-theme-border text-theme-heading hover:bg-theme-bg transition-colors"
+              >
+                <LogIn className="h-3.5 w-3.5" />
+                <span>Sign In</span>
+              </Link>
+              <Link
+                href="/signup"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-semibold bg-brand-primary/10 border border-brand-primary/20 text-brand-primary hover:bg-brand-primary/20 transition-colors"
+              >
+                <span>Sign Up</span>
+              </Link>
+            </div>
           </div>
 
           {/* Bottom Info inside Drawer */}

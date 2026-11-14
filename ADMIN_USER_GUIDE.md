@@ -42,3 +42,4 @@ The navigation sidebar on the left provides instant access to all core operation
 - **Real-Time Public Publishing**: Any changes you save in Courses, Internships, Events, Projects, or Page CMS are instantly live on the public website via Next.js cache revalidation.
 - **Reviewing Candidate Resumes**: In the Candidate Pipeline, click **Review Candidate** to view student credentials. Clicking **View Candidate Resume** generates a secure 1-hour signed link to view the PDF.
 - **Exporting Data to Excel/CSV**: Look for the **Export CSV** button on the Submissions Inbox, Events, and Candidate Pipeline pages to download clean spreadsheets for offline reports.
+

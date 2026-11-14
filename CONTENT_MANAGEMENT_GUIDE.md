@@ -39,3 +39,4 @@ Each section can be customized with:
 Every time you click **Save & Publish Changes**:
 - An immutable snapshot is recorded in `content_revisions` with a sequential version number, editor identity, and timestamp.
 - Switch to the **Version History** tab at any time to review past revisions and click **Restore This Version** with 1-click instant rollback.
+

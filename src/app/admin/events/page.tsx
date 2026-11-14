@@ -145,3 +145,4 @@ export default async function AdminEventsPage() {
     </div>
   );
 }
+

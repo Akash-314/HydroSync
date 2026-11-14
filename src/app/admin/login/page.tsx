@@ -182,15 +182,18 @@ export default function AdminLoginPage() {
               </Button>
             </form>
 
-            {/* Security Notice */}
-            <div className="mt-6 pt-5 border-t border-theme-border/60 text-center">
-              <div className="flex items-center justify-center gap-1.5 text-[11px] text-theme-muted">
+            {/* Create Account Link & Security Notice */}
+            <div className="mt-6 pt-5 border-t border-theme-border/60 text-center space-y-2">
+              <p className="text-xs text-theme-muted">
+                Don&apos;t have an account?{' '}
+                <Link href="/signup" className="text-brand-primary hover:text-brand-secondary font-bold">
+                  Create account / Sign Up &rarr;
+                </Link>
+              </p>
+              <div className="flex items-center justify-center gap-1.5 text-[11px] text-theme-muted/80">
                 <ShieldCheck className="h-3.5 w-3.5 text-brand-innovation-green" />
                 <span>Protected by Server-Side Role-Based Access Control</span>
               </div>
-              <p className="text-[10px] text-theme-muted/70 mt-1">
-                Access is restricted to authorized personnel. Public registration is disabled.
-              </p>
             </div>
           </div>
         </div>

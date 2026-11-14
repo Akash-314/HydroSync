@@ -29,3 +29,4 @@ export const ALL_PAGES: PageMetadata[] = [
   { slug: 'terms', name: 'Terms of Service', path: '/terms', desc: 'Terms and conditions for technical education and training' },
   { slug: 'refund-policy', name: 'Refund & Cancellation', path: '/refund-policy', desc: 'Fee structures, seat booking, refund regulations' },
 ];
+

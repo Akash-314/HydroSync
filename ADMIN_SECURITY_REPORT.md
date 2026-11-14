@@ -35,3 +35,4 @@ A comprehensive security audit of the newly implemented Management Portal was co
 ## 3. Certification
 
 The HydroSync Management Portal satisfies industry security standards for cloud-hosted enterprise administrative portals.
+

@@ -33,3 +33,4 @@ Under each course, managers can manage active batches:
 - Set batch start date and maximum seat capacity.
 - As students enroll, current seat counts are tracked in real-time.
 - Mark batch as `scheduled`, `in_progress`, or `completed`.
+

@@ -93,3 +93,4 @@ When administrators publish or update courses, internships, workshops, projects,
 - The global layout and home page (`/`)
 
 This ensures changes reflect instantaneously for global users without requiring build redeployments.
+

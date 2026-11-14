@@ -1,19 +1,4 @@
 import type { NextConfig } from 'next';
-import fs from 'fs';
-import path from 'path';
-
-// Self-healing dev cache: If a production build artifact exists while starting dev mode,
-// clean .next to prevent Next.js 15 layout.css 404s and unstyled page rendering.
-if (process.env.NODE_ENV !== 'production') {
-  try {
-    const buildIdPath = path.join(process.cwd(), '.next', 'BUILD_ID');
-    if (fs.existsSync(buildIdPath)) {
-      fs.rmSync(path.join(process.cwd(), '.next'), { recursive: true, force: true });
-    }
-  } catch {
-    // Suppress if files are locked
-  }
-}
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,

@@ -31,3 +31,4 @@ Navigate to `/admin/internships/fields` to customize the questions asked on the 
 - Set fields as Required or Optional.
 - Create new text, email, select, or file upload fields.
 - Reorder fields using drag-and-drop or priority indices.
+

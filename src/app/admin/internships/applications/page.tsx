@@ -504,3 +504,4 @@ export default function InternshipApplicationsPipelinePage() {
     </div>
   );
 }
+

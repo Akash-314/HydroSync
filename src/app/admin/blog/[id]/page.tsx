@@ -37,3 +37,4 @@ export default async function EditBlogPostPage({
 
   return <BlogEditor initialPost={post} isNew={false} />;
 }
+

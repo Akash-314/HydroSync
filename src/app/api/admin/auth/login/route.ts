@@ -28,15 +28,36 @@ export async function POST(req: NextRequest) {
     }
 
     // Verify user is in admin_users and active
+    const cleanEmail = email.trim().toLowerCase();
     const privilegedClient = getSupabaseAdminClient() || supabase;
-    const { data: adminUser, error: adminError } = await privilegedClient
+    let { data: adminUser } = await privilegedClient
       .from('admin_users')
       .select('*')
-      .eq('id', authData.user.id)
+      .or(`id.eq.${authData.user.id},email.eq.${cleanEmail}`)
       .eq('is_active', true)
-      .single();
+      .maybeSingle();
 
-    if (adminError || !adminUser) {
+    // Special auto-bootstrap for owner akvines944@gmail.com
+    if (!adminUser && cleanEmail === 'akvines944@gmail.com') {
+      const { data: newOwner } = await privilegedClient
+        .from('admin_users')
+        .upsert(
+          {
+            id: authData.user.id,
+            email: cleanEmail,
+            full_name: 'Akash V (Owner)',
+            role: 'owner',
+            is_active: true,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: 'email' }
+        )
+        .select()
+        .single();
+      adminUser = newOwner;
+    }
+
+    if (!adminUser) {
       // Sign out immediately if not authorized as admin
       await supabase.auth.signOut();
       return NextResponse.json(
@@ -48,11 +69,19 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Update last activity timestamp
-    await privilegedClient
-      .from('admin_users')
-      .update({ updated_at: new Date().toISOString() })
-      .eq('id', authData.user.id);
+    // Ensure auth_user_id is synced
+    if (adminUser.id !== authData.user.id) {
+      await privilegedClient
+        .from('admin_users')
+        .update({ id: authData.user.id, updated_at: new Date().toISOString() })
+        .eq('email', cleanEmail);
+    } else {
+      // Update last activity timestamp
+      await privilegedClient
+        .from('admin_users')
+        .update({ updated_at: new Date().toISOString() })
+        .eq('id', authData.user.id);
+    }
 
     // Record audit log
     await logAdminActivity({
