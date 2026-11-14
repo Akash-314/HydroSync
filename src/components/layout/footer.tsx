@@ -164,6 +164,14 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/admin/login"
+                  className="font-medium text-theme-muted hover:text-brand-secondary dark:hover:text-brand-midnight-yellow transition-colors inline-block py-0.5"
+                >
+                  Staff / Admin Sign In →
+                </Link>
+              </li>
             </ul>
 
             <div className="pt-2 text-[11px] text-theme-muted dark:text-brand-dark-muted border-t border-theme-border/60 dark:border-brand-dark-border/60">

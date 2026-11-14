@@ -14,6 +14,7 @@ import {
   BookOpen,
   ArrowRight,
   Sparkles,
+  LogIn,
 } from 'lucide-react';
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
@@ -345,9 +346,16 @@ export function Navbar() {
           </Link>
         </nav>
 
-        {/* Desktop Header Actions (Theme Toggle + School Bus Yellow Apply Now CTA) */}
+        {/* Desktop Header Actions (Theme Toggle + Sign In + Apply Now CTA) */}
         <div className="hidden lg:flex items-center gap-3 shrink-0">
           <ThemeToggle />
+          <Link
+            href="/admin/login"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-theme-muted hover:text-theme-heading hover:bg-theme-bg/60 transition-colors"
+          >
+            <LogIn className="h-3.5 w-3.5" />
+            <span>Sign In</span>
+          </Link>
           <Button
             href="/apply"
             variant="cta"
@@ -567,6 +575,16 @@ export function Navbar() {
               )}
             >
               Contact Directory
+            </Link>
+
+            {/* Portal Sign In Link */}
+            <Link
+              href="/admin/login"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-semibold text-brand-secondary dark:text-brand-midnight-yellow hover:bg-theme-bg dark:hover:bg-brand-dark-surface transition-colors"
+            >
+              <LogIn className="h-4 w-4" />
+              <span>Portal Sign In</span>
             </Link>
           </div>
 
