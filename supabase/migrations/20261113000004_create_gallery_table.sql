@@ -1,6 +1,16 @@
 -- Migration: 20261113000004_create_gallery_table.sql
 -- Description: Creates gallery_items table with RLS and updated_at trigger
 
+-- 1. Ensure updated_at trigger function exists
+CREATE OR REPLACE FUNCTION public.update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- 2. Create gallery_items table
 CREATE TABLE IF NOT EXISTS public.gallery_items (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -33,3 +43,4 @@ CREATE TRIGGER trg_gallery_items_updated_at
     BEFORE UPDATE ON public.gallery_items
     FOR EACH ROW
     EXECUTE FUNCTION public.update_updated_at_column();
+
