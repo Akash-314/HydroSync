@@ -55,7 +55,11 @@ export function TeamEditor({
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        throw new Error(data.message || 'Failed to save team member');
+        let errorMsg = data.message || 'Failed to save team member';
+        if (res.status === 401 || res.status === 403 || errorMsg.toLowerCase().includes('session') || errorMsg.toLowerCase().includes('auth')) {
+          errorMsg = 'Administrator authentication required or session expired. Please sign in to save changes.';
+        }
+        throw new Error(errorMsg);
       }
 
       setMessage({ text: isNew ? 'Team member added!' : 'Profile updated!', type: 'success' });
@@ -124,14 +128,25 @@ export function TeamEditor({
 
       {message && (
         <div
-          className={`p-3 rounded-xl border flex items-center gap-2 text-xs ${
+          className={`p-3 rounded-xl border flex items-center justify-between gap-3 text-xs ${
             message.type === 'success'
               ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
               : 'bg-red-500/10 border-red-500/20 text-red-400'
           }`}
         >
-          {message.type === 'success' ? <CheckCircle2 className="h-4 w-4" /> : <AlertCircle className="h-4 w-4" />}
-          <span>{message.text}</span>
+          <div className="flex items-center gap-2">
+            {message.type === 'success' ? <CheckCircle2 className="h-4 w-4 shrink-0" /> : <AlertCircle className="h-4 w-4 shrink-0" />}
+            <span>{message.text}</span>
+          </div>
+          {message.type === 'error' && message.text.includes('sign in') && (
+            <Link
+              href="/admin/login"
+              target="_blank"
+              className="underline font-semibold hover:text-white shrink-0 ml-2"
+            >
+              Sign In in new tab &rarr;
+            </Link>
+          )}
         </div>
       )}
 

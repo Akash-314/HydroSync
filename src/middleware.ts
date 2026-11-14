@@ -6,10 +6,10 @@ export function middleware(req: NextRequest) {
 
   // Only guard /admin routes (except /admin/login)
   if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
-    // Check for Supabase session cookies
+    // Check for non-empty Supabase session cookies
     const allCookies = req.cookies.getAll();
     const hasAuthCookie = allCookies.some(
-      (c) => c.name.includes('-auth-token') || c.name.startsWith('sb-')
+      (c) => (c.name.includes('-auth-token') || c.name.startsWith('sb-')) && Boolean(c.value && c.value.trim().length > 20)
     );
 
     // If no Supabase cookie is present, redirect to login

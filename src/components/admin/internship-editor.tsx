@@ -89,7 +89,11 @@ export function InternshipEditor({
 
       const data = await res.json();
       if (!res.ok || !data.success) {
-        throw new Error(data.message || 'Error saving internship program');
+        let errorMsg = data.message || 'Error saving internship program';
+        if (res.status === 401 || res.status === 403 || errorMsg.toLowerCase().includes('session') || errorMsg.toLowerCase().includes('auth')) {
+          errorMsg = 'Administrator authentication required or session expired. Please sign in to save changes.';
+        }
+        throw new Error(errorMsg);
       }
 
       setMessage({ text: 'Internship program successfully updated in database.', type: 'success' });

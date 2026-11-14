@@ -87,7 +87,11 @@ export function BlogEditor({
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        throw new Error(data.message || 'Failed to save article');
+        let errorMsg = data.message || 'Failed to save article';
+        if (res.status === 401 || res.status === 403 || errorMsg.toLowerCase().includes('session') || errorMsg.toLowerCase().includes('auth')) {
+          errorMsg = 'Administrator authentication required or session expired. Please sign in to save changes.';
+        }
+        throw new Error(errorMsg);
       }
 
       setMessage({ text: isNew ? 'Article created!' : 'Article updated!', type: 'success' });
